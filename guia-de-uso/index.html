@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="MkDocs Team">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Guia de uso - Maker Regular Expression</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Guia de uso";
+    var mkdocs_page_input_path = "guia-de-uso.md";
+    var mkdocs_page_url = "/guia-de-uso/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Maker Regular Expression</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Guia de uso</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#classes">Classes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#regex">Regex</a></li>
+        
+            <li><a class="toctree-l3" href="#quantifier_1">Quantifier</a></li>
+        
+            <li><a class="toctree-l3" href="#set">Set</a></li>
+        
+            <li><a class="toctree-l3" href="#group">Group</a></li>
+        
+            <li><a class="toctree-l3" href="#anchor">Anchor</a></li>
+        
+            <li><a class="toctree-l3" href="#helperrange">helper.Range</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#exemplos">Exemplos</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../idiomas/">Idiomas</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../licenca/">Licenca</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../sobre/">Sobre</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Maker Regular Expression</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Guia de uso</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/alvarofpp/mre/edit/master/docs/guia-de-uso.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="classes">Classes</h1>
+<ul>
+<li><a href="#regex">Regex</a></li>
+<li><a href="#quantifier">Quantifier</a></li>
+<li><a href="#set">Set</a></li>
+<li><a href="#group">Group</a></li>
+<li><a href="#anchor">Anchor</a></li>
+<li>Helper<ul>
+<li><a href="#range">Range</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="regex"><a name="regex">Regex</a></h2>
+<p>Essa é a classe pai de todas as classes do pacote, o RegEx que se está manipulando fica na variável <code>self.rgx</code>. Seu construtor pode receber qualquer quantidade de entradas, porém espera-se que sejam dos tipos: <code>str</code>, <code>int</code> e a própria classe <code>Regex</code>. Para entender melhor:</p>
+<ul>
+<li><code>str</code>: concatena à variável <code>self.rgx</code>;</li>
+<li><code>int</code>: realiza <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a>;</li>
+<li><code>Regex</code>: concatena o valor armazenado em <code>self.rgx</code> do objeto que se recebe na variável <code>self.rgx</code> do objeto que está recebendo.</li>
+</ul>
+<p>Formas de se declarar um <strong>Regex</strong>:</p>
+<pre><code class="python">from mre import Regex, Group
+
+rgx_one = Regex(&quot;Hello world&quot;)  # Hello world
+rgx_two = Regex(&quot;Hello&quot;, &quot; world&quot;)  # Hello world
+rgx_three = Regex(&quot;Hello&quot;) + &quot; &quot; + Regex(&quot;world&quot;)  # Hello world
+rgx_four = Regex('&lt;', Group('h[1-6]'), '&gt;')  # &lt;(h[1-6])&gt;
+rgx_five = Regex('&lt;', Regex.SLASH, 1, '&gt;')  # &lt;\/\1&gt;
+</code></pre>
+
+<h3 id="constantes">Constantes</h3>
+<p>Constantes presentes na classe <strong>Regex</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Constante</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ANY</code></td>
+<td><code>.</code></td>
+</tr>
+<tr>
+<td><code>DOT</code></td>
+<td><code>\\.</code></td>
+</tr>
+<tr>
+<td><code>DIGIT</code></td>
+<td><code>\\d</code></td>
+</tr>
+<tr>
+<td><code>WHITESPACE</code></td>
+<td><code>\\s</code></td>
+</tr>
+<tr>
+<td><code>WORD_CHARS</code></td>
+<td><code>\\w</code></td>
+</tr>
+<tr>
+<td><code>SLASH</code></td>
+<td><code>\\/.</code></td>
+</tr>
+<tr>
+<td><code>NOT_DIGIT</code></td>
+<td><code>\\D</code></td>
+</tr>
+<tr>
+<td><code>NOT_WHITESPACE</code></td>
+<td><code>\\S</code></td>
+</tr>
+<tr>
+<td><code>NOT_WORD_CHARS</code></td>
+<td><code>\\W</code></td>
+</tr>
+<tr>
+<td><code>ZERO_OR_ONE</code></td>
+<td><code>?</code></td>
+</tr>
+<tr>
+<td><code>ZERO_OR_MULTIPLE</code></td>
+<td><code>*</code></td>
+</tr>
+<tr>
+<td><code>ONE_OR_MULTIPLE</code></td>
+<td><code>+</code></td>
+</tr>
+<tr>
+<td><code>HYPHEN</code></td>
+<td><code>\\-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos">Métodos</h3>
+<p>Além das funções, também haverá a descrição das sobrecargas.</p>
+<h4 id="9595str9595">__str__</h4>
+<p>Retorna o valor salvo em <code>self.rgx</code>.</p>
+<pre><code class="python">from mre import Regex
+
+regex = Regex(&quot;Hello world&quot;)
+print(regex)  # &quot;Hello world&quot;
+</code></pre>
+
+<h4 id="9595eq9595">__eq__</h4>
+<p>A comparação pode ser entre <code>str</code> ou <code>Regex</code>:
+- <code>== str</code>: compara <code>self.rgx</code> ao valor da variável recebida;
+- <code>== Regex</code>: compara <code>self.rgx</code> (acessado através do método <strong>get</strong>) ao valor da variável <code>self.rgx</code> do objeto recebido (também acessado através do método <strong>get</strong>).</p>
+<pre><code class="python">from mre import Regex
+
+regex_one = Regex(&quot;Hello world&quot;)
+
+print(regex_one == &quot;Hello world&quot;)  # True
+print(regex_one == &quot;Hello world!&quot;)  # False
+
+print(regex_one == Regex(&quot;Hello world&quot;))  # True
+print(regex_one == Regex(&quot;Hello world!&quot;))  # False
+</code></pre>
+
+<h4 id="9595iadd9595">__iadd__</h4>
+<p>Espera-se variáveis de dois tipos: <code>str</code> e <code>Regex</code>. Para entender melhor:</p>
+<ul>
+<li><code>+= str</code>: concatena <code>self.rgx</code> ao valor da variável recebida;</li>
+<li><code>+= Regex</code>: concatena <code>self.rgx</code> ao valor da variável <code>self.rgx</code> do objeto recebido (acessado através do método <strong>get</strong>).</li>
+</ul>
+<p>Essa sobrecarga altera diretamente a variável <code>self.rgx</code>, sendo assim nos casos de operação, por exemplo, em um objeto <strong>Set</strong>, irá alterar o valor entre os colchetes.</p>
+<pre><code class="python">from mre import Regex, Set
+
+regex = Regex(&quot;Hello&quot;)
+regex += &quot; world&quot;
+print(regex)  # &quot;Hello world&quot;
+
+regex_set = Set(&quot;Hello&quot;)  # [Hello]
+regex_set += &quot; world&quot;
+print(regex_set)  # &quot;[Hello world]&quot;
+</code></pre>
+
+<h4 id="9595add9595">__add__</h4>
+<p>Espera-se variáveis de dois tipos: <code>str</code> e <code>Regex</code>. Diferentemente da sobrecarga <strong>__iadd__</strong>, essa sobrecarga retorna um novo objeto <strong>Regex</strong>.</p>
+<ul>
+<li><code>+ str</code>: concatena <code>self.rgx</code> (acessado através do método <strong>get</strong>) ao valor da variável recebida;</li>
+<li><code>+ Regex</code>: concatena <code>self.rgx</code> (acessado através do método <strong>get</strong>) ao valor da variável <code>self.rgx</code> do objeto recebido (também acessado através do método <strong>get</strong>).</li>
+</ul>
+<pre><code class="python">from mre import Regex
+
+regex_one = Regex(&quot;Hello&quot;) + &quot; &quot; + Regex(&quot;world&quot;)
+regex_two = Regex(&quot;Hello&quot;) + Regex(&quot; world&quot;)
+
+print(regex_one)  # &quot;Hello world&quot;
+print(regex_two)  # &quot;Hello world&quot;
+</code></pre>
+
+<h4 id="get">get</h4>
+<p>Retorna o valor armazenado em <code>self.rgx</code>.</p>
+<pre><code class="python">from mre import Regex
+
+regex = Regex(&quot;Valor armazenado&quot;)
+print(regex.get())  # &quot;Valor armazenado&quot;
+</code></pre>
+
+<h4 id="quantifier">quantifier</h4>
+<p>Possui os seguintes parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Valor padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>without_maximum</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>Serve para quantificar as vezes que o RegEx deve/pode aparecer (de <code>n</code> até <code>m</code>). Retorna um novo objeto <strong>Regex</strong>.</p>
+<p>Em casos específicos, há a adição de um símbolo. Esses casos são:</p>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>m</th>
+<th>without_maximum</th>
+<th>Símbolo</th>
+<th>Acesso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td>-</td>
+<td><code>?</code></td>
+<td><code>Regex.ZERO_OR_ONE</code></td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>-</td>
+<td><code>True</code></td>
+<td><code>*</code></td>
+<td><code>Regex.ZERO_OR_MULTIPLE</code></td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>-</td>
+<td><code>True</code></td>
+<td><code>+</code></td>
+<td><code>Regex.ONE_OR_MULTIPLE</code></td>
+</tr>
+</tbody>
+</table>
+<p>Além desses casos específicos, a quantificação poderá ocorrer das formas:
+- <code>{n}</code>: deve ocorrer <code>n</code> vezes;
+- <code>{n, m}</code>: pode ocorrer de <code>n</code> até <code>m</code> vezes.</p>
+<pre><code class="python">from mre import Regex
+
+digits = Regex(&quot;[0-9]&quot;)
+
+print(digits.quantifier(3))  # &quot;[0-9]{3}&quot;
+print(digits.quantifier(3, 5))  # &quot;[0-9]{3,5}&quot;
+print(digits.quantifier(0, 1))  # &quot;[0-9]?&quot;
+print(digits.quantifier(0, without_maximum=True))  # &quot;[0-9]*&quot;
+print(digits.quantifier(1, without_maximum=True))  # &quot;[0-9]+&quot;
+</code></pre>
+
+<h4 id="backreferences">backreferences</h4>
+<p>Possui um parâmetro do tipo <code>int</code> (<code>group_n</code>) que serve para indicar qual grupo se deseja realizar a <em>backreference</em>. Retorna um <strong>Regex</strong> que realiza <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a> ao grupo indicado.</p>
+<p>Um meio alternativo de chamar esse método é inserindo um <code>int</code> no construtor.</p>
+<pre><code class="python">from mre import Regex
+
+regex_one = Regex().backreferences(1)
+regex_two = Regex(2)
+
+print(regex_one)  # &quot;\1&quot;
+print(regex_two)  # &quot;\2&quot;
+</code></pre>
+
+<h2 id="quantifier_1"><a name="quantifier">Quantifier</a></h2>
+<p>Essa classe serve como uma alternativa a chamada do método <strong>Regex.quantifier</strong>. Seu construtor recebe 4 parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Valor padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>regex</code></td>
+<td><code>str</code>, <code>int</code>, <code>Regex</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>without_maximum</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro é referente ao RegEx que se deseja construir, os 3 restantes são para a chamada do método <strong>Regex.quantifier</strong>.</p>
+<pre><code class="python">from mre import Regex, Quantifier
+
+digits_one = Regex(&quot;[0-9]&quot;).quantifier(3, 5)
+digits_two = Quantifier(&quot;[0-9]&quot;, 3, 5)
+
+print(digits_one)  # &quot;[0-9]{3,5}&quot;
+print(digits_two)  # &quot;[0-9]{3,5}&quot;
+</code></pre>
+
+<h2 id="set"><a name="set">Set</a></h2>
+<p>Essa classe representa um conjunto no RegEx. Seu construtor é o mesmo da classe <strong>Regex</strong>.</p>
+<pre><code class="python">from mre import Set
+
+regex_set = Set(&quot;0-9&quot;)
+
+print(regex_set)  # &quot;[0-9]&quot;
+print(regex_set.quantifier(3))  # &quot;[0-9]{3}&quot;
+</code></pre>
+
+<h3 id="metodos_1">Métodos</h3>
+<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo apenas os métodos a seguir.</p>
+<h4 id="get_1">get</h4>
+<p>Retorna o valor armazenado em <code>self.rgx</code>, mas entre colchetes.</p>
+<pre><code class="python">from mre import Set
+
+regex_set = Set(&quot;0-9&quot;)
+print(regex_set.get())  # &quot;[0-9]&quot;
+</code></pre>
+
+<h4 id="quantifier_2">quantifier</h4>
+<p>Retorna um novo objeto <strong>Regex</strong> com o quantificador referente ao conjunto.</p>
+<pre><code class="python">from mre import Set
+
+regex_set = Set(&quot;0-9&quot;)
+
+print(regex_set)  # &quot;[0-9]&quot;
+print(regex_set.quantifier(3))  # &quot;[0-9]{3}&quot;
+
+print(type(regex_set))  # &lt;class 'mre.Set.Set'&gt;
+print(type(regex_set.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
+</code></pre>
+
+<h2 id="group"><a name="group">Group</a></h2>
+<p>Essa classe representa um grupo no RegEx. Seu construtor recebe 2 parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Valor padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>regex</code></td>
+<td><code>str</code>, <code>int</code>, <code>Regex</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>non_capturing</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>Se o argumento referente a <code>non_capturing</code> for <code>True</code>, será adicionado os símbolos que indicam que a <em>RegEx Engine</em> não deve retornar o valor daquele grupo (<code>?:</code>).</p>
+<pre><code class="python">from mre import Group
+
+regex_group_one = Group('&lt;h1&gt;') + Group('[\w\s]+') + Group('&lt;/h1&gt;')
+regex_group_two = Group('&lt;h1&gt;', True) + Group('[\w\s]+') + Group('&lt;/h1&gt;', True)
+
+print(regex_group_one)  # (&lt;h1&gt;)([\w\s]+)(&lt;/h1&gt;)
+print(regex_group_two)  # (?:&lt;h1&gt;)([\w\s]+)(?:&lt;/h1&gt;)
+</code></pre>
+
+<h3 id="metodos_2">Métodos</h3>
+<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo apenas os métodos a seguir.</p>
+<h4 id="get_2">get</h4>
+<p>Retorna o valor armazenado em <code>self.rgx</code>, mas entre parênteses.</p>
+<pre><code class="python">from mre import Group
+
+regex_group_one = Group(&quot;&lt;h1&gt;&quot;)
+regex_group_two = Group(&quot;&lt;/h1&gt;&quot;, True)
+
+print(regex_group_one.get())  # &quot;(&lt;h1&gt;)&quot;
+print(regex_group_two.get())  # &quot;(?:&lt;/h1&gt;)&quot;
+</code></pre>
+
+<h4 id="quantifier_3">quantifier</h4>
+<p>Retorna um novo objeto <strong>Regex</strong> com o quantificador referente ao grupo.</p>
+<pre><code class="python">from mre import Group
+
+regex_group = Group(&quot;&lt;h1&gt;&quot;)
+
+print(regex_group)  # &quot;(&lt;h1&gt;)&quot;
+print(regex_group.quantifier(3))  # &quot;(&lt;h1&gt;){3}&quot;
+
+print(type(regex_group))  # &lt;class 'mre.Group.Group'&gt;
+print(type(regex_group.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
+</code></pre>
+
+<h2 id="anchor"><a name="anchor">Anchor</a></h2>
+<p>Essa classe representa um RegEx com âncora (o RegEx deve começar e terminar como foi definido). Seu construtor recebe 2 parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Valor padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>regex</code></td>
+<td><code>str</code>, <code>int</code>, <code>Regex</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>negate</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>Se o argumento referente a <code>negate</code> for <code>True</code>, será adicionado os símbolos do inverso do padrão, ou seja, a RegEx não deve começar e terminar como definido.</p>
+<pre><code class="python">from mre import Anchor
+
+regex_anchor_one = Anchor(&quot;\\d{4}-\\w+.txt&quot;)
+regex_anchor_two = Anchor(&quot;\\d{4}-\\w+.txt&quot;, True)
+
+print(regex_anchor_one)  # &quot;^\d{4}-\w+.txt$&quot;
+print(regex_anchor_two)  # &quot;\b\d{4}-\w+.txt\B&quot;
+</code></pre>
+
+<h3 id="metodos_3">Métodos</h3>
+<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo apenas os métodos a seguir.</p>
+<h4 id="get_3">get</h4>
+<p>Retorna o valor armazenado em <code>self.rgx</code>, mas entre parênteses.</p>
+<pre><code class="python">from mre import Anchor
+
+regex_anchor_one = Anchor(&quot;&lt;h1&gt;Hello world&lt;\/h1&gt;&quot;)
+regex_anchor_two = Anchor(&quot;&lt;h1&gt;Hello world&lt;\/h1&gt;&quot;, True)
+
+print(regex_anchor_one.get())  # &quot;^&lt;h1&gt;Hello world&lt;/h1&gt;$&quot;
+print(regex_anchor_two.get())  # &quot;\b&lt;h1&gt;Hello world&lt;/h1&gt;\B&quot;
+</code></pre>
+
+<h2 id="helperrange"><a name="range">helper.Range</a></h2>
+<p>Essa classe serve para ajudar na criação de um RegEx que indique uma classe de caracteres a partir de um <em>range</em>. Seu construtor recebe 2 parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Valor padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minimum</code></td>
+<td><code>str</code>, <code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td><code>str</code>, <code>int</code></td>
+<td><code>"z"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Idealmente usar essa classe junto a classe <strong>Set</strong>, pois dentro de um conjunto, o hífen possui um valor "mágico" que o permite dar essa função de atribuir <em>range</em>, fora do conjunto o hífen tem apenas valor de hífen. Logo, se você quiser, por exemplo, todas as letras minúsculas, deve usar <code>[a-z]</code> e não apenas <code>a-z</code>, pois assim você está apenas dizendo que quer <code>a</code>, <code>-</code> e <code>z</code>.</p>
+<pre><code class="python">from mre.helper import Range
+
+# Todos os dígitos
+digits = Range(0, 9)
+# Todas as letras
+letters = Range('A', 'z')
+
+print(digits)  # &quot;0-9&quot;
+print(letters)  # &quot;A-z&quot;
+</code></pre>
+
+<h3 id="metodos_4">Métodos</h3>
+<p>Essa classe herda os métodos da classe <strong>Regex</strong>, além de possuir seus próprios métodos.</p>
+<h4 id="digits">digits</h4>
+<p>Possui 2 parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Valor padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minimum</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td><code>int</code></td>
+<td><code>9</code></td>
+</tr>
+</tbody>
+</table>
+<p>Retorna um <em>range</em> que define os dígitos entre <code>minimum</code> e <code>maximum</code>.</p>
+<pre><code class="python">from mre.helper import Range
+
+regex_range_one = Range(0, 9)
+regex_range_two = Range().digits()
+regex_range_three = Range(0, 6)
+regex_range_four = Range().digits(0, 6)
+
+print(regex_range_one)  # &quot;0-9&quot;
+print(regex_range_two)  # &quot;0-9&quot;
+print(regex_range_three)  # &quot;0-6&quot;
+print(regex_range_four)  # &quot;0-6&quot;
+</code></pre>
+
+<h4 id="letters">letters</h4>
+<p>Possui 4 parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Valor padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minimum</code></td>
+<td><code>chr</code></td>
+<td><code>A</code></td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td><code>chr</code></td>
+<td><code>z</code></td>
+</tr>
+<tr>
+<td><code>uppercase</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>lowercase</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>Retorna um <em>range</em> que define as letras entre <code>minimum</code> e <code>maximum</code>.</p>
+<pre><code class="python">from mre.helper import Range
+
+# Todas as letras
+regex_range_one = Range('A', 'z')
+regex_range_two = Range().letters()
+regex_range_three = Range().letters('A', 'z')
+regex_range_four = Range().letters(uppercase=True, lowercase=True)
+# Todas as letras maiúsculas
+regex_range_five = Range().letters(uppercase=True)
+# Todas as letras minúsculas
+regex_range_six = Range().letters(lowercase=True)
+
+print(regex_range_one)  # &quot;A-z&quot;
+print(regex_range_two)  # &quot;A-z&quot;
+print(regex_range_three)  # &quot;A-z&quot;
+print(regex_range_four)  # &quot;A-z&quot;
+print(regex_range_five)  # &quot;A-Z&quot;
+print(regex_range_six)  # &quot;a-z&quot;
+</code></pre>
+
+<h1 id="exemplos">Exemplos</h1>
+<p>2 formas de fazer o RegEx de <strong>CEP</strong> (<code>[0-9]{5}-?[0-9]{3}</code>)</p>
+<pre><code class="python">from mre import Regex, Set
+
+# Todos os dígitos
+digits = Set(Regex(&quot;0-9&quot;))
+
+rgx_cep = Regex(
+    digits.quantifier(5),
+    Regex(&quot;-&quot;).quantifier(0, 1),
+    digits.quantifier(3),
+)
+</code></pre>
+
+<pre><code class="python">from mre import Regex, Quantifier, Set
+from mre.helper import Range
+
+# Todos os dígitos [0-9]
+digits = Set(Range().digits())
+# O hífen pode aparecer nenhuma ou uma vez
+hyphen = Quantifier(&quot;-&quot;, 0, 1)
+
+rgx_cep = Regex(
+    digits.quantifier(5), hyphen,
+    digits.quantifier(3),
+)
+</code></pre>
+
+<p>RegEx de <strong>CPF</strong> (<code>[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}</code>):</p>
+<pre><code class="python">from mre import Regex, Set
+from mre.helper import Range
+
+# Todos os dígitos
+all_digits = Set(Range(0, 9))
+# O ponto pode aparecer nenhuma ou uma vez
+dot = Regex(Regex.DOT).quantifier(0, 1)
+# O hífen pode aparecer nenhuma ou uma vez
+hyphen = Regex('-').quantifier(0, 1)
+
+rgx_cpf = Regex(
+    all_digits.quantifier(3), dot,
+    all_digits.quantifier(3), dot,
+    all_digits.quantifier(3), hyphen,
+    all_digits.quantifier(2),
+)
+</code></pre>
+
+<p>RegEx de <strong>CNPJ</strong> (<code>\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}</code>):</p>
+<pre><code class="python">from mre import Regex, Quantifier
+
+# Todos os dígitos
+digits = Regex(Regex.DIGIT)
+# O ponto pode aparecer nenhuma ou uma vez
+dot = Regex(Regex.DOT).quantifier(0, 1)
+# A barra pode aparecer nenhuma ou uma vez
+slash = Regex(Regex.SLASH).quantifier(0, 1)
+# O hífen pode aparecer nenhuma ou uma vez
+hyphen = Quantifier(&quot;-&quot;, 0, 1)
+
+rgx_cnpj = Regex(
+    digits.quantifier(2), dot,
+    digits.quantifier(3), dot,
+    digits.quantifier(3), slash,
+    digits.quantifier(4), hyphen,
+    digits.quantifier(2),
+)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../idiomas/" class="btn btn-neutral float-right" title="Idiomas">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/alvarofpp/mre" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../idiomas/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
