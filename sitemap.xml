@@ -20,6 +20,22 @@
     
         
     <url>
+     <loc>https://github.com/alvarofpp/mre/de/</loc>
+     <lastmod>2019-10-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://github.com/alvarofpp/mre/de/wie-benutzt-man/</loc>
+     <lastmod>2019-10-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
      <loc>https://github.com/alvarofpp/mre/en/how-to-use/</loc>
      <lastmod>2019-10-02</lastmod>
      <changefreq>daily</changefreq>
@@ -27,6 +43,22 @@
         
     <url>
      <loc>https://github.com/alvarofpp/mre/en/</loc>
+     <lastmod>2019-10-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://github.com/alvarofpp/mre/es_ES/guia_de_uso/</loc>
+     <lastmod>2019-10-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://github.com/alvarofpp/mre/es_ES/</loc>
      <lastmod>2019-10-02</lastmod>
      <changefreq>daily</changefreq>
     </url>
