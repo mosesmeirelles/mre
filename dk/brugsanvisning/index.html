@@ -8,7 +8,7 @@
   
   <meta name="author" content="MkDocs Team">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Guia de uso - Maker Regular Expression</title>
+  <title>Brugsanvisning - Maker Regular Expression</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Guia de uso";
-    var mkdocs_page_input_path = "pt_BR/guia-de-uso.md";
-    var mkdocs_page_url = "/pt_BR/guia-de-uso/";
+    var mkdocs_page_name = "Brugsanvisning";
+    var mkdocs_page_input_path = "dk/brugsanvisning.md";
+    var mkdocs_page_url = "/dk/brugsanvisning/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -76,13 +76,38 @@
 		
     <span class="caption-text">Dk</span>
     <ul class="subnav">
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../dk/brugsanvisning/">Brugsanvisning</a>
+    <a class="current" href="./">Brugsanvisning</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#klasser">Klasser</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#regex">Regex</a></li>
+        
+            <li><a class="toctree-l4" href="#quantifier_1">Quantifier</a></li>
+        
+            <li><a class="toctree-l4" href="#set">Set</a></li>
+        
+            <li><a class="toctree-l4" href="#group">Group</a></li>
+        
+            <li><a class="toctree-l4" href="#anchor">Anchor</a></li>
+        
+            <li><a class="toctree-l4" href="#helperrange">helper.Range</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#eksempler">Eksempler</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../dk/">Home</a>
+    <a class="" href="../">Home</a>
                 </li>
     </ul>
 	    </li>
@@ -121,38 +146,13 @@
 		
     <span class="caption-text">pt BR</span>
     <ul class="subnav">
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Guia de uso</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#classes">Classes</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#regex">Regex</a></li>
-        
-            <li><a class="toctree-l4" href="#quantifier_1">Quantifier</a></li>
-        
-            <li><a class="toctree-l4" href="#set">Set</a></li>
-        
-            <li><a class="toctree-l4" href="#group">Group</a></li>
-        
-            <li><a class="toctree-l4" href="#anchor">Anchor</a></li>
-        
-            <li><a class="toctree-l4" href="#helperrange">helper.Range</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l3"><a href="#exemplos">Exemplos</a></li>
-    
-
-    </ul>
+    <a class="" href="../../pt_BR/guia-de-uso/">Guia de uso</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../">Home</a>
+    <a class="" href="../../pt_BR/">Home</a>
                 </li>
     </ul>
 	    </li>
@@ -179,14 +179,14 @@
     
       
         
-          <li>pt BR &raquo;</li>
+          <li>Dk &raquo;</li>
         
       
     
-    <li>Guia de uso</li>
+    <li>Brugsanvisning</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/alvarofpp/mre/edit/master/docs/pt_BR/guia-de-uso.md"
+        <a href="https://github.com/alvarofpp/mre/edit/master/docs/dk/brugsanvisning.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -196,26 +196,24 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="classes">Classes</h1>
+                <h1 id="klasser">Klasser</h1>
 <ul>
 <li><a href="#regex">Regex</a></li>
 <li><a href="#quantifier">Quantifier</a></li>
 <li><a href="#set">Set</a></li>
 <li><a href="#group">Group</a></li>
 <li><a href="#anchor">Anchor</a></li>
-<li>Helper<ul>
+<li>Helper</li>
 <li><a href="#range">Range</a></li>
 </ul>
-</li>
-</ul>
 <h2 id="regex"><a name="regex">Regex</a></h2>
-<p>Essa é a classe pai de todas as classes do pacote, o RegEx que se está manipulando fica na variável <code>self.rgx</code>. Seu construtor pode receber qualquer quantidade de entradas, porém espera-se que sejam dos tipos: <code>str</code>, <code>int</code> e a própria classe <code>Regex</code>. Para entender melhor:</p>
+<p>Dette er forældreklassen til alle andre klasser i denne pakke. RegEx'et håndteres i variablen <code>self.rgx</code>. Konstruktøren kan modtage et hvilket som helst antal af argumenter, men de skal være af en af følgende typer: <code>str</code>, <code>int</code> eller <code>Regex</code>-klassen selv. For bedre forståelse:</p>
 <ul>
-<li><code>str</code>: concatena à variável <code>self.rgx</code>;</li>
-<li><code>int</code>: realiza <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a>;</li>
-<li><code>Regex</code>: concatena o valor armazenado em <code>self.rgx</code> do objeto que se recebe na variável <code>self.rgx</code> do objeto que está recebendo.</li>
+<li><code>str</code>: konkatenerer til variablen <code>self.rgx</code>;</li>
+<li><code>int</code>: laver <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a>;</li>
+<li><code>Regex</code>: konkatenerer værdien af <code>self.rgx</code> for det videregivne objekt til <code>self.rgx</code>-variablen af det modtagende objekt.</li>
 </ul>
-<p>Formas de se declarar um <strong>Regex</strong>:</p>
+<p>Måder at erklære et <strong>Regex</strong>:</p>
 <pre><code class="python">from mre import Regex, Group
 
 rgx_one = Regex(&quot;Hello world&quot;)  # Hello world
@@ -225,13 +223,13 @@ rgx_four = Regex('&lt;', Group('h[1-6]'), '&gt;')  # &lt;(h[1-6])&gt;
 rgx_five = Regex('&lt;', Regex.SLASH, 1, '&gt;')  # &lt;\/\1&gt;
 </code></pre>
 
-<h3 id="constantes">Constantes</h3>
-<p>Constantes presentes na classe <strong>Regex</strong>:</p>
+<h3 id="konstanter">Konstanter</h3>
+<p>Konstanter tilgængelige i <strong>Regex</strong>-klassen:</p>
 <table>
 <thead>
 <tr>
-<th>Constante</th>
-<th>Valor</th>
+<th>Konstant</th>
+<th>Værdi</th>
 </tr>
 </thead>
 <tbody>
@@ -289,10 +287,10 @@ rgx_five = Regex('&lt;', Regex.SLASH, 1, '&gt;')  # &lt;\/\1&gt;
 </tr>
 </tbody>
 </table>
-<h3 id="metodos">Métodos</h3>
-<p>Além das funções, também haverá a descrição das sobrecargas.</p>
+<h3 id="metoder">Metoder</h3>
+<p>Beskrivelser af metoder og overloads.</p>
 <h4 id="9595str9595">__str__</h4>
-<p>Retorna o valor salvo em <code>self.rgx</code>.</p>
+<p>Returnerer værdien gemt i <code>self.rgx</code>.</p>
 <pre><code class="python">from mre import Regex
 
 regex = Regex(&quot;Hello world&quot;)
@@ -300,9 +298,11 @@ print(regex)  # &quot;Hello world&quot;
 </code></pre>
 
 <h4 id="9595eq9595">__eq__</h4>
-<p>A comparação pode ser entre <code>str</code> ou <code>Regex</code>:
-- <code>== str</code>: compara <code>self.rgx</code> ao valor da variável recebida;
-- <code>== Regex</code>: compara <code>self.rgx</code> (acessado através do método <strong>get</strong>) ao valor da variável <code>self.rgx</code> do objeto recebido (também acessado através do método <strong>get</strong>).</p>
+<p>Sammenligninger er mulige mellem typerne <code>str</code> og <code>Regex</code>:</p>
+<ul>
+<li><code>== str</code>: sammenligner <code>self.rgx</code> med værdien af den videregivne variabel;</li>
+<li><code>== Regex</code>: sammenligner <code>self.rgx</code> (tilgået via <strong>get</strong>-metoden) med værdien af <code>self.rgx</code> for det videregivne objekt (også tilgået via <strong>get</strong>-metoden).</li>
+</ul>
 <pre><code class="python">from mre import Regex
 
 regex_one = Regex(&quot;Hello world&quot;)
@@ -315,12 +315,12 @@ print(regex_one == Regex(&quot;Hello world!&quot;))  # False
 </code></pre>
 
 <h4 id="9595iadd9595">__iadd__</h4>
-<p>Espera-se variáveis de dois tipos: <code>str</code> e <code>Regex</code>. Para entender melhor:</p>
+<p>Forventer variable af typerne <code>str</code> og <code>Regex</code>. For bedre forståelse:</p>
 <ul>
-<li><code>+= str</code>: concatena <code>self.rgx</code> ao valor da variável recebida;</li>
-<li><code>+= Regex</code>: concatena <code>self.rgx</code> ao valor da variável <code>self.rgx</code> do objeto recebido (acessado através do método <strong>get</strong>).</li>
+<li><code>+= str</code>: konkatenerer <code>self.rgx</code> med værdien af den videregivne variabel;</li>
+<li><code>+= Regex</code>: konkatenerer <code>self.rgx</code> med værdien af variablen <code>self.rgx</code> for det videregivne objekt (tilgået via <strong>get</strong>-metoden).</li>
 </ul>
-<p>Essa sobrecarga altera diretamente a variável <code>self.rgx</code>, sendo assim nos casos de operação, por exemplo, em um objeto <strong>Set</strong>, irá alterar o valor entre os colchetes.</p>
+<p>Overloadet ændrer direkte værdien af <code>self.rgx</code>. I tilfælde af operationer som <strong>Set</strong> af et objekt, vil det ændres til værdien indsat mellem to brackets.</p>
 <pre><code class="python">from mre import Regex, Set
 
 regex = Regex(&quot;Hello&quot;)
@@ -333,10 +333,10 @@ print(regex_set)  # &quot;[Hello world]&quot;
 </code></pre>
 
 <h4 id="9595add9595">__add__</h4>
-<p>Espera-se variáveis de dois tipos: <code>str</code> e <code>Regex</code>. Diferentemente da sobrecarga <strong>__iadd__</strong>, essa sobrecarga retorna um novo objeto <strong>Regex</strong>.</p>
+<p>Forventer variable af typerne <code>str</code> og <code>Regex</code>. I modsætning til overloadet af <strong>__iadd__</strong>, returnerer dette overload et nyt <strong>Regex</strong>-objekt.</p>
 <ul>
-<li><code>+ str</code>: concatena <code>self.rgx</code> (acessado através do método <strong>get</strong>) ao valor da variável recebida;</li>
-<li><code>+ Regex</code>: concatena <code>self.rgx</code> (acessado através do método <strong>get</strong>) ao valor da variável <code>self.rgx</code> do objeto recebido (também acessado através do método <strong>get</strong>).</li>
+<li><code>+ str</code>: konkatenerer <code>self.rgx</code> (tilgået via <strong>get</strong>-metoden) med værdien af den videregivne variabel;</li>
+<li><code>+ Regex</code>: konkatenerer <code>self.rgx</code> (tilgået via <strong>get</strong>-metoden) med værdien af <code>self.rgx</code> for det videregivne objekt (også tilgået via <strong>get</strong>-metoden).</li>
 </ul>
 <pre><code class="python">from mre import Regex
 
@@ -348,21 +348,21 @@ print(regex_two)  # &quot;Hello world&quot;
 </code></pre>
 
 <h4 id="get">get</h4>
-<p>Retorna o valor armazenado em <code>self.rgx</code>.</p>
+<p>Returnerer værdien gemt i <code>self.rgx</code>.</p>
 <pre><code class="python">from mre import Regex
 
-regex = Regex(&quot;Valor armazenado&quot;)
-print(regex.get())  # &quot;Valor armazenado&quot;
+regex = Regex(&quot;stored value&quot;)
+print(regex.get())  # &quot;stored value&quot;
 </code></pre>
 
 <h4 id="quantifier">quantifier</h4>
-<p>Possui os seguintes parâmetros:</p>
+<p>Har følgende parametre:</p>
 <table>
 <thead>
 <tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Valor padrão</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Standardværdi</th>
 </tr>
 </thead>
 <tbody>
@@ -383,16 +383,16 @@ print(regex.get())  # &quot;Valor armazenado&quot;
 </tr>
 </tbody>
 </table>
-<p>Serve para quantificar as vezes que o RegEx deve/pode aparecer (de <code>n</code> até <code>m</code>). Retorna um novo objeto <strong>Regex</strong>.</p>
-<p>Em casos específicos, há a adição de um símbolo. Esses casos são:</p>
+<p>Brugt til at kvantificere hvor ofte et Regex må/burde optræde (fra <code>n</code> til <code>m</code>). Returnerer et nyt <strong>Regex</strong>.</p>
+<p>I særlige tilfælde bliver et symbol tilføjet. Disse tilfælde er:</p>
 <table>
 <thead>
 <tr>
 <th>n</th>
 <th>m</th>
 <th>without_maximum</th>
-<th>Símbolo</th>
-<th>Acesso</th>
+<th>Symbol</th>
+<th>Adgang</th>
 </tr>
 </thead>
 <tbody>
@@ -419,9 +419,11 @@ print(regex.get())  # &quot;Valor armazenado&quot;
 </tr>
 </tbody>
 </table>
-<p>Além desses casos específicos, a quantificação poderá ocorrer das formas:
-- <code>{n}</code>: deve ocorrer <code>n</code> vezes;
-- <code>{n, m}</code>: pode ocorrer de <code>n</code> até <code>m</code> vezes.</p>
+<p>Udover disse særlige tilfælde kan kvantificering forekomme som følgende:</p>
+<ul>
+<li><code>{n}</code>: bør forekomme <code>n</code> gange;</li>
+<li><code>{n, m}</code>: kan forekomme fra <code>n</code> op til <code>m</code> gange.</li>
+</ul>
 <pre><code class="python">from mre import Regex
 
 digits = Regex(&quot;[0-9]&quot;)
@@ -434,8 +436,8 @@ print(digits.quantifier(1, without_maximum=True))  # &quot;[0-9]+&quot;
 </code></pre>
 
 <h4 id="backreferences">backreferences</h4>
-<p>Possui um parâmetro do tipo <code>int</code> (<code>group_n</code>) que serve para indicar qual grupo se deseja realizar a <em>backreference</em>. Retorna um <strong>Regex</strong> que realiza <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a> ao grupo indicado.</p>
-<p>Um meio alternativo de chamar esse método é inserindo um <code>int</code> no construtor.</p>
+<p>Har et parameter af typen <code>int</code> (<code>group_n</code>), som bruges til at angive hvilken gruppe du vil bruge til at lave en <em>backreference</em>. Returnerer et <strong>Regex</strong>, som laver <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a> af den angivne gruppe.</p>
+<p>En alternativ måde at kalde denne metode på er ved at give en <code>int</code> til konstruktøren.</p>
 <pre><code class="python">from mre import Regex
 
 regex_one = Regex().backreferences(1)
@@ -446,13 +448,13 @@ print(regex_two)  # &quot;\2&quot;
 </code></pre>
 
 <h2 id="quantifier_1"><a name="quantifier">Quantifier</a></h2>
-<p>Essa classe serve como uma alternativa a chamada do método <strong>Regex.quantifier</strong>. Seu construtor recebe 4 parâmetros:</p>
+<p>Denne klasse fungerer som et alternativ til at kalde <strong>Regex.quantifier</strong>. Konstruktøren har fire parametre:</p>
 <table>
 <thead>
 <tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Valor padrão</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Standardværdi</th>
 </tr>
 </thead>
 <tbody>
@@ -478,7 +480,7 @@ print(regex_two)  # &quot;\2&quot;
 </tr>
 </tbody>
 </table>
-<p>O primeiro é referente ao RegEx que se deseja construir, os 3 restantes são para a chamada do método <strong>Regex.quantifier</strong>.</p>
+<p>Det første parameter referer til det RegEx, du vil lave. De andre tre bruges til at kalde metoden <strong>Regex.quantifier</strong>.</p>
 <pre><code class="python">from mre import Regex, Quantifier
 
 digits_one = Regex(&quot;[0-9]&quot;).quantifier(3, 5)
@@ -489,7 +491,7 @@ print(digits_two)  # &quot;[0-9]{3,5}&quot;
 </code></pre>
 
 <h2 id="set"><a name="set">Set</a></h2>
-<p>Essa classe representa um conjunto no RegEx. Seu construtor é o mesmo da classe <strong>Regex</strong>.</p>
+<p>Denne klasse repræsenterer et set i RegEx. Konstruktøren er identisk til <strong>Regex</strong>.</p>
 <pre><code class="python">from mre import Set
 
 regex_set = Set(&quot;0-9&quot;)
@@ -498,10 +500,10 @@ print(regex_set)  # &quot;[0-9]&quot;
 print(regex_set.quantifier(3))  # &quot;[0-9]{3}&quot;
 </code></pre>
 
-<h3 id="metodos_1">Métodos</h3>
-<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo apenas os métodos a seguir.</p>
+<h3 id="metoder_1">Metoder</h3>
+<p>Denne klasse nedarver metoderne fra <strong>Regex</strong>-klassen og overskriver følgende:</p>
 <h4 id="get_1">get</h4>
-<p>Retorna o valor armazenado em <code>self.rgx</code>, mas entre colchetes.</p>
+<p>Returnerer værdien gemt i <code>self.rgx</code>, men indsat i brackets.</p>
 <pre><code class="python">from mre import Set
 
 regex_set = Set(&quot;0-9&quot;)
@@ -509,7 +511,7 @@ print(regex_set.get())  # &quot;[0-9]&quot;
 </code></pre>
 
 <h4 id="quantifier_2">quantifier</h4>
-<p>Retorna um novo objeto <strong>Regex</strong> com o quantificador referente ao conjunto.</p>
+<p>Returnerer et nyt <strong>Regex</strong>-objekt med en quantifier for det pågældende set.</p>
 <pre><code class="python">from mre import Set
 
 regex_set = Set(&quot;0-9&quot;)
@@ -522,13 +524,13 @@ print(type(regex_set.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
 </code></pre>
 
 <h2 id="group"><a name="group">Group</a></h2>
-<p>Essa classe representa um grupo no RegEx. Seu construtor recebe 2 parâmetros:</p>
+<p>Denne klasse repræsenterer en gruppe i RegEx. Konstruktøren har to parametre:</p>
 <table>
 <thead>
 <tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Valor padrão</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Standardværdi</th>
 </tr>
 </thead>
 <tbody>
@@ -544,7 +546,7 @@ print(type(regex_set.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
 </tr>
 </tbody>
 </table>
-<p>Se o argumento referente a <code>non_capturing</code> for <code>True</code>, será adicionado os símbolos que indicam que a <em>RegEx Engine</em> não deve retornar o valor daquele grupo (<code>?:</code>).</p>
+<p>Hvis argumentet for <code>non_capturing</code> er <code>True</code>, tilføjes symbolet der angiver <em>RegEx Engine</em> til at returnere en ikke-indfangende gruppe (<code>?:</code>).</p>
 <pre><code class="python">from mre import Group
 
 regex_group_one = Group('&lt;h1&gt;') + Group('[\w\s]+') + Group('&lt;/h1&gt;')
@@ -554,10 +556,10 @@ print(regex_group_one)  # (&lt;h1&gt;)([\w\s]+)(&lt;/h1&gt;)
 print(regex_group_two)  # (?:&lt;h1&gt;)([\w\s]+)(?:&lt;/h1&gt;)
 </code></pre>
 
-<h3 id="metodos_2">Métodos</h3>
-<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo apenas os métodos a seguir.</p>
+<h3 id="metoder_2">Metoder</h3>
+<p>Denne klasse nedarver metoderne fra <strong>Regex</strong>-klassen og overskriver følgende:</p>
 <h4 id="get_2">get</h4>
-<p>Retorna o valor armazenado em <code>self.rgx</code>, mas entre parênteses.</p>
+<p>Returnerer værdien gemt i <code>self.rgx</code>, men indsat i parenteser.</p>
 <pre><code class="python">from mre import Group
 
 regex_group_one = Group(&quot;&lt;h1&gt;&quot;)
@@ -568,7 +570,7 @@ print(regex_group_two.get())  # &quot;(?:&lt;/h1&gt;)&quot;
 </code></pre>
 
 <h4 id="quantifier_3">quantifier</h4>
-<p>Retorna um novo objeto <strong>Regex</strong> com o quantificador referente ao grupo.</p>
+<p>Returnerer et nyt <strong>Regex</strong>-objekt med en quantifier til gruppen.</p>
 <pre><code class="python">from mre import Group
 
 regex_group = Group(&quot;&lt;h1&gt;&quot;)
@@ -581,13 +583,13 @@ print(type(regex_group.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
 </code></pre>
 
 <h2 id="anchor"><a name="anchor">Anchor</a></h2>
-<p>Essa classe representa um RegEx com âncora (o RegEx deve começar e terminar como foi definido). Seu construtor recebe 2 parâmetros:</p>
+<p>Denne klasse repræsenterer et forankret RegEx (RegEx'et skal starte og slutte som defineret). Konstruktøren har to parametre:</p>
 <table>
 <thead>
 <tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Valor padrão</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Standardværdi</th>
 </tr>
 </thead>
 <tbody>
@@ -603,7 +605,7 @@ print(type(regex_group.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
 </tr>
 </tbody>
 </table>
-<p>Se o argumento referente a <code>negate</code> for <code>True</code>, será adicionado os símbolos do inverso do padrão, ou seja, a RegEx não deve começar e terminar como definido.</p>
+<p>Hvis argumentet for <code>negate</code> er <code>True</code>, tilføjes det inverse mønster, som i at RegEx'et ikke må starte og slutte som defineret.</p>
 <pre><code class="python">from mre import Anchor
 
 regex_anchor_one = Anchor(&quot;\\d{4}-\\w+.txt&quot;)
@@ -613,10 +615,10 @@ print(regex_anchor_one)  # &quot;^\d{4}-\w+.txt$&quot;
 print(regex_anchor_two)  # &quot;\b\d{4}-\w+.txt\B&quot;
 </code></pre>
 
-<h3 id="metodos_3">Métodos</h3>
-<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo apenas os métodos a seguir.</p>
+<h3 id="metoder_3">Metoder</h3>
+<p>Denne klasse nedarver metoderne fra <strong>Regex</strong>-klassen og overskriver følgende:</p>
 <h4 id="get_3">get</h4>
-<p>Retorna o valor armazenado em <code>self.rgx</code>, mas entre parênteses.</p>
+<p>Returnerer værdien gemt i <code>self.rgx</code>, men forankret.</p>
 <pre><code class="python">from mre import Anchor
 
 regex_anchor_one = Anchor(&quot;&lt;h1&gt;Hello world&lt;\/h1&gt;&quot;)
@@ -627,13 +629,13 @@ print(regex_anchor_two.get())  # &quot;\b&lt;h1&gt;Hello world&lt;/h1&gt;\B&quot
 </code></pre>
 
 <h2 id="helperrange"><a name="range">helper.Range</a></h2>
-<p>Essa classe serve para ajudar na criação de um RegEx que indique uma classe de caracteres a partir de um <em>range</em>. Seu construtor recebe 2 parâmetros:</p>
+<p>Denne klasse er ment til at hjælpe med at lave et RegEx, der angiver en karakter-klasse i form af en <em>range</em>. Konstruktøren har to parametre:</p>
 <table>
 <thead>
 <tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Valor padrão</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Standardværdi</th>
 </tr>
 </thead>
 <tbody>
@@ -649,28 +651,28 @@ print(regex_anchor_two.get())  # &quot;\b&lt;h1&gt;Hello world&lt;/h1&gt;\B&quot
 </tr>
 </tbody>
 </table>
-<p>Idealmente usar essa classe junto a classe <strong>Set</strong>, pois dentro de um conjunto, o hífen possui um valor "mágico" que o permite dar essa função de atribuir <em>range</em>, fora do conjunto o hífen tem apenas valor de hífen. Logo, se você quiser, por exemplo, todas as letras minúsculas, deve usar <code>[a-z]</code> e não apenas <code>a-z</code>, pois assim você está apenas dizendo que quer <code>a</code>, <code>-</code> e <code>z</code>.</p>
+<p>Ideelt set bør du bruge denne klasse sammen med et <strong>Set</strong>. I et <strong>Set</strong> har bindestregen en "magisk" værdi, der gør den i stand til at tildele en rækkevidde. Uden for et set har en bindestreg kun værdien af en bindestreg. Så hvis du vil have små bogstaver, skal du bruge <code>[a-z]</code> i stedet for <code>a-z</code>. <code>a-z</code> angiver, at du kun vil have værdierne <code>a</code>, <code>-</code> og <code>z</code>.</p>
 <pre><code class="python">from mre.helper import Range
 
-# Todos os dígitos
+# alle cifre
 digits = Range(0, 9)
-# Todas as letras
+# alle bogstaver
 letters = Range('A', 'z')
 
 print(digits)  # &quot;0-9&quot;
 print(letters)  # &quot;A-z&quot;
 </code></pre>
 
-<h3 id="metodos_4">Métodos</h3>
-<p>Essa classe herda os métodos da classe <strong>Regex</strong>, além de possuir seus próprios métodos.</p>
+<h3 id="metoder_4">Metoder</h3>
+<p>Denne klasse nedarver metoderne fra <strong>Regex</strong>-klassen og har dens egne metoder.</p>
 <h4 id="digits">digits</h4>
-<p>Possui 2 parâmetros:</p>
+<p>Har to parametre:</p>
 <table>
 <thead>
 <tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Valor padrão</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Standardværdi</th>
 </tr>
 </thead>
 <tbody>
@@ -686,7 +688,7 @@ print(letters)  # &quot;A-z&quot;
 </tr>
 </tbody>
 </table>
-<p>Retorna um <em>range</em> que define os dígitos entre <code>minimum</code> e <code>maximum</code>.</p>
+<p>Returnerer en <em>range</em>, der er defineret som cifrene mellem <code>minimum</code> og <code>maximum</code>.</p>
 <pre><code class="python">from mre.helper import Range
 
 regex_range_one = Range(0, 9)
@@ -701,13 +703,13 @@ print(regex_range_four)  # &quot;0-6&quot;
 </code></pre>
 
 <h4 id="letters">letters</h4>
-<p>Possui 4 parâmetros:</p>
+<p>Har fire parametre:</p>
 <table>
 <thead>
 <tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Valor padrão</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Standardværdi</th>
 </tr>
 </thead>
 <tbody>
@@ -733,17 +735,17 @@ print(regex_range_four)  # &quot;0-6&quot;
 </tr>
 </tbody>
 </table>
-<p>Retorna um <em>range</em> que define as letras entre <code>minimum</code> e <code>maximum</code>.</p>
+<p>Returnerer en <em>range</em>, der er defineret som bogstaverne mellem <code>minimum</code> og <code>maximum</code>.</p>
 <pre><code class="python">from mre.helper import Range
 
-# Todas as letras
+# alle bogstaver
 regex_range_one = Range('A', 'z')
 regex_range_two = Range().letters()
 regex_range_three = Range().letters('A', 'z')
 regex_range_four = Range().letters(uppercase=True, lowercase=True)
-# Todas as letras maiúsculas
+# alle store bogstaver
 regex_range_five = Range().letters(uppercase=True)
-# Todas as letras minúsculas
+# alle små bogstaver
 regex_range_six = Range().letters(lowercase=True)
 
 print(regex_range_one)  # &quot;A-z&quot;
@@ -754,11 +756,11 @@ print(regex_range_five)  # &quot;A-Z&quot;
 print(regex_range_six)  # &quot;a-z&quot;
 </code></pre>
 
-<h1 id="exemplos">Exemplos</h1>
-<p>2 formas de fazer o RegEx de <strong>CEP</strong> (<code>[0-9]{5}-?[0-9]{3}</code>)</p>
+<h1 id="eksempler">Eksempler</h1>
+<p>To måder at lave et RegEx for et <strong>CEP</strong> (braziliansk postnummer) (<code>[0-9]{5}-?[0-9]{3}</code>):</p>
 <pre><code class="python">from mre import Regex, Set
 
-# Todos os dígitos
+# alle cifre
 digits = Set(Regex(&quot;0-9&quot;))
 
 rgx_cep = Regex(
@@ -771,9 +773,9 @@ rgx_cep = Regex(
 <pre><code class="python">from mre import Regex, Quantifier, Set
 from mre.helper import Range
 
-# Todos os dígitos [0-9]
+# alle cifre [0-9]
 digits = Set(Range().digits())
-# O hífen pode aparecer nenhuma ou uma vez
+# bindestregen må forekomme nul eller én gange
 hyphen = Quantifier(&quot;-&quot;, 0, 1)
 
 rgx_cep = Regex(
@@ -782,15 +784,15 @@ rgx_cep = Regex(
 )
 </code></pre>
 
-<p>RegEx de <strong>CPF</strong> (<code>[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}</code>):</p>
+<p>RegEx for et <strong>CPF</strong> (braziliansk registernummer for skatteydere) (<code>[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}</code>):</p>
 <pre><code class="python">from mre import Regex, Set
 from mre.helper import Range
 
-# Todos os dígitos
+# alle cifre
 all_digits = Set(Range(0, 9))
-# O ponto pode aparecer nenhuma ou uma vez
+# punktummet må forekomme nul eller én gange
 dot = Regex(Regex.DOT).quantifier(0, 1)
-# O hífen pode aparecer nenhuma ou uma vez
+# bindestregen må forekomme nul eller én gange
 hyphen = Regex('-').quantifier(0, 1)
 
 rgx_cpf = Regex(
@@ -801,16 +803,16 @@ rgx_cpf = Regex(
 )
 </code></pre>
 
-<p>RegEx de <strong>CNPJ</strong> (<code>\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}</code>):</p>
+<p>RegEx for et <strong>CNPJ</strong> (ID i det brazilianske National Registry of Legal Entities) (<code>\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}</code>):</p>
 <pre><code class="python">from mre import Regex, Quantifier
 
-# Todos os dígitos
+# alle cifre
 digits = Regex(Regex.DIGIT)
-# O ponto pode aparecer nenhuma ou uma vez
+# punktummet må forekomme nul eller én gange
 dot = Regex(Regex.DOT).quantifier(0, 1)
-# A barra pode aparecer nenhuma ou uma vez
+# skråstregen må forekomme nul eller én gange
 slash = Regex(Regex.SLASH).quantifier(0, 1)
-# O hífen pode aparecer nenhuma ou uma vez
+# bindestregen må forekomme nul eller én gange
 hyphen = Quantifier(&quot;-&quot;, 0, 1)
 
 rgx_cnpj = Regex(
@@ -831,7 +833,7 @@ rgx_cnpj = Regex(
         <a href="../" class="btn btn-neutral float-right" title="Home">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../es_ES/" class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../de/wie-benutzt-man/" class="btn btn-neutral" title="Wie benutzt man"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -859,7 +861,7 @@ rgx_cnpj = Regex(
           <a href="https://github.com/alvarofpp/mre" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../es_ES/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../de/wie-benutzt-man/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../" style="color: #fcfcfc">Next &raquo;</a></span>

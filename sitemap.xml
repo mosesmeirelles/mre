@@ -36,13 +36,29 @@
     
         
     <url>
-     <loc>https://github.com/alvarofpp/mre/en/how-to-use/</loc>
+     <loc>https://github.com/alvarofpp/mre/dk/brugsanvisning/</loc>
      <lastmod>2019-10-02</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://github.com/alvarofpp/mre/en/</loc>
+     <loc>https://github.com/alvarofpp/mre/dk/</loc>
+     <lastmod>2019-10-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://github.com/alvarofpp/mre/en_US/how-to-use/</loc>
+     <lastmod>2019-10-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://github.com/alvarofpp/mre/en_US/</loc>
      <lastmod>2019-10-02</lastmod>
      <changefreq>daily</changefreq>
     </url>

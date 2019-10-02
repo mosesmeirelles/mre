@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/",
-            "text": "Language\n\n\n\n\nen\n\n\npt-br",
+            "text": "Language\n\n\n\n\nde\n\n\ndk\n\n\nen-US\n\n\nes-ES\n\n\npt-BR",
             "title": "Home"
         },
         {
             "location": "/#language",
-            "text": "en  pt-br",
+            "text": "de  dk  en-US  es-ES  pt-BR",
             "title": "Language"
         },
         {
@@ -181,162 +181,322 @@
             "title": "Beispiele"
         },
         {
-            "location": "/en/how-to-use/",
+            "location": "/dk/brugsanvisning/",
+            "text": "Klasser\n\n\n\n\nRegex\n\n\nQuantifier\n\n\nSet\n\n\nGroup\n\n\nAnchor\n\n\nHelper\n\n\nRange\n\n\n\n\nRegex\n\n\nDette er for\u00e6ldreklassen til alle andre klasser i denne pakke. RegEx'et h\u00e5ndteres i variablen \nself.rgx\n. Konstrukt\u00f8ren kan modtage et hvilket som helst antal af argumenter, men de skal v\u00e6re af en af f\u00f8lgende typer: \nstr\n, \nint\n eller \nRegex\n-klassen selv. For bedre forst\u00e5else:\n\n\n\n\nstr\n: konkatenerer til variablen \nself.rgx\n;\n\n\nint\n: laver \nbackreferences\n;\n\n\nRegex\n: konkatenerer v\u00e6rdien af \nself.rgx\n for det videregivne objekt til \nself.rgx\n-variablen af det modtagende objekt.\n\n\n\n\nM\u00e5der at erkl\u00e6re et \nRegex\n:\n\n\nfrom mre import Regex, Group\n\nrgx_one = Regex(\"Hello world\")  # Hello world\nrgx_two = Regex(\"Hello\", \" world\")  # Hello world\nrgx_three = Regex(\"Hello\") + \" \" + Regex(\"world\")  # Hello world\nrgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>\nrgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\\/\\1>\n\n\n\n\nKonstanter\n\n\nKonstanter tilg\u00e6ngelige i \nRegex\n-klassen:\n\n\n\n\n\n\n\n\nKonstant\n\n\nV\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nANY\n\n\n.\n\n\n\n\n\n\nDOT\n\n\n\\\\.\n\n\n\n\n\n\nDIGIT\n\n\n\\\\d\n\n\n\n\n\n\nWHITESPACE\n\n\n\\\\s\n\n\n\n\n\n\nWORD_CHARS\n\n\n\\\\w\n\n\n\n\n\n\nSLASH\n\n\n\\\\/.\n\n\n\n\n\n\nNOT_DIGIT\n\n\n\\\\D\n\n\n\n\n\n\nNOT_WHITESPACE\n\n\n\\\\S\n\n\n\n\n\n\nNOT_WORD_CHARS\n\n\n\\\\W\n\n\n\n\n\n\nZERO_OR_ONE\n\n\n?\n\n\n\n\n\n\nZERO_OR_MULTIPLE\n\n\n*\n\n\n\n\n\n\nONE_OR_MULTIPLE\n\n\n+\n\n\n\n\n\n\nHYPHEN\n\n\n\\\\-\n\n\n\n\n\n\n\n\nMetoder\n\n\nBeskrivelser af metoder og overloads.\n\n\n__str__\n\n\nReturnerer v\u00e6rdien gemt i \nself.rgx\n.\n\n\nfrom mre import Regex\n\nregex = Regex(\"Hello world\")\nprint(regex)  # \"Hello world\"\n\n\n\n\n__eq__\n\n\nSammenligninger er mulige mellem typerne \nstr\n og \nRegex\n:\n\n\n\n\n== str\n: sammenligner \nself.rgx\n med v\u00e6rdien af den videregivne variabel;\n\n\n== Regex\n: sammenligner \nself.rgx\n (tilg\u00e5et via \nget\n-metoden) med v\u00e6rdien af \nself.rgx\n for det videregivne objekt (ogs\u00e5 tilg\u00e5et via \nget\n-metoden).\n\n\n\n\nfrom mre import Regex\n\nregex_one = Regex(\"Hello world\")\n\nprint(regex_one == \"Hello world\")  # True\nprint(regex_one == \"Hello world!\")  # False\n\nprint(regex_one == Regex(\"Hello world\"))  # True\nprint(regex_one == Regex(\"Hello world!\"))  # False\n\n\n\n\n__iadd__\n\n\nForventer variable af typerne \nstr\n og \nRegex\n. For bedre forst\u00e5else:\n\n\n\n\n+= str\n: konkatenerer \nself.rgx\n med v\u00e6rdien af den videregivne variabel;\n\n\n+= Regex\n: konkatenerer \nself.rgx\n med v\u00e6rdien af variablen \nself.rgx\n for det videregivne objekt (tilg\u00e5et via \nget\n-metoden).\n\n\n\n\nOverloadet \u00e6ndrer direkte v\u00e6rdien af \nself.rgx\n. I tilf\u00e6lde af operationer som \nSet\n af et objekt, vil det \u00e6ndres til v\u00e6rdien indsat mellem to brackets.\n\n\nfrom mre import Regex, Set\n\nregex = Regex(\"Hello\")\nregex += \" world\"\nprint(regex)  # \"Hello world\"\n\nregex_set = Set(\"Hello\")  # [Hello]\nregex_set += \" world\"\nprint(regex_set)  # \"[Hello world]\"\n\n\n\n\n__add__\n\n\nForventer variable af typerne \nstr\n og \nRegex\n. I mods\u00e6tning til overloadet af \n__iadd__\n, returnerer dette overload et nyt \nRegex\n-objekt.\n\n\n\n\n+ str\n: konkatenerer \nself.rgx\n (tilg\u00e5et via \nget\n-metoden) med v\u00e6rdien af den videregivne variabel;\n\n\n+ Regex\n: konkatenerer \nself.rgx\n (tilg\u00e5et via \nget\n-metoden) med v\u00e6rdien af \nself.rgx\n for det videregivne objekt (ogs\u00e5 tilg\u00e5et via \nget\n-metoden).\n\n\n\n\nfrom mre import Regex\n\nregex_one = Regex(\"Hello\") + \" \" + Regex(\"world\")\nregex_two = Regex(\"Hello\") + Regex(\" world\")\n\nprint(regex_one)  # \"Hello world\"\nprint(regex_two)  # \"Hello world\"\n\n\n\n\nget\n\n\nReturnerer v\u00e6rdien gemt i \nself.rgx\n.\n\n\nfrom mre import Regex\n\nregex = Regex(\"stored value\")\nprint(regex.get())  # \"stored value\"\n\n\n\n\nquantifier\n\n\nHar f\u00f8lgende parametre:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nStandardv\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nn\n\n\nint\n\n\n0\n\n\n\n\n\n\nm\n\n\nint\n\n\n0\n\n\n\n\n\n\nwithout_maximum\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nBrugt til at kvantificere hvor ofte et Regex m\u00e5/burde optr\u00e6de (fra \nn\n til \nm\n). Returnerer et nyt \nRegex\n.\n\n\nI s\u00e6rlige tilf\u00e6lde bliver et symbol tilf\u00f8jet. Disse tilf\u00e6lde er:\n\n\n\n\n\n\n\n\nn\n\n\nm\n\n\nwithout_maximum\n\n\nSymbol\n\n\nAdgang\n\n\n\n\n\n\n\n\n\n\n0\n\n\n1\n\n\n-\n\n\n?\n\n\nRegex.ZERO_OR_ONE\n\n\n\n\n\n\n0\n\n\n-\n\n\nTrue\n\n\n*\n\n\nRegex.ZERO_OR_MULTIPLE\n\n\n\n\n\n\n1\n\n\n-\n\n\nTrue\n\n\n+\n\n\nRegex.ONE_OR_MULTIPLE\n\n\n\n\n\n\n\n\nUdover disse s\u00e6rlige tilf\u00e6lde kan kvantificering forekomme som f\u00f8lgende:\n\n\n\n\n{n}\n: b\u00f8r forekomme \nn\n gange;\n\n\n{n, m}\n: kan forekomme fra \nn\n op til \nm\n gange.\n\n\n\n\nfrom mre import Regex\n\ndigits = Regex(\"[0-9]\")\n\nprint(digits.quantifier(3))  # \"[0-9]{3}\"\nprint(digits.quantifier(3, 5))  # \"[0-9]{3,5}\"\nprint(digits.quantifier(0, 1))  # \"[0-9]?\"\nprint(digits.quantifier(0, without_maximum=True))  # \"[0-9]*\"\nprint(digits.quantifier(1, without_maximum=True))  # \"[0-9]+\"\n\n\n\n\nbackreferences\n\n\nHar et parameter af typen \nint\n (\ngroup_n\n), som bruges til at angive hvilken gruppe du vil bruge til at lave en \nbackreference\n. Returnerer et \nRegex\n, som laver \nbackreferences\n af den angivne gruppe.\n\n\nEn alternativ m\u00e5de at kalde denne metode p\u00e5 er ved at give en \nint\n til konstrukt\u00f8ren.\n\n\nfrom mre import Regex\n\nregex_one = Regex().backreferences(1)\nregex_two = Regex(2)\n\nprint(regex_one)  # \"\\1\"\nprint(regex_two)  # \"\\2\"\n\n\n\n\nQuantifier\n\n\nDenne klasse fungerer som et alternativ til at kalde \nRegex.quantifier\n. Konstrukt\u00f8ren har fire parametre:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nStandardv\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nregex\n\n\nstr\n, \nint\n, \nRegex\n\n\n\"\"\n\n\n\n\n\n\nn\n\n\nint\n\n\n0\n\n\n\n\n\n\nm\n\n\nint\n\n\n0\n\n\n\n\n\n\nwithout_maximum\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nDet f\u00f8rste parameter referer til det RegEx, du vil lave. De andre tre bruges til at kalde metoden \nRegex.quantifier\n.\n\n\nfrom mre import Regex, Quantifier\n\ndigits_one = Regex(\"[0-9]\").quantifier(3, 5)\ndigits_two = Quantifier(\"[0-9]\", 3, 5)\n\nprint(digits_one)  # \"[0-9]{3,5}\"\nprint(digits_two)  # \"[0-9]{3,5}\"\n\n\n\n\nSet\n\n\nDenne klasse repr\u00e6senterer et set i RegEx. Konstrukt\u00f8ren er identisk til \nRegex\n.\n\n\nfrom mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"\n\n\n\n\nMetoder\n\n\nDenne klasse nedarver metoderne fra \nRegex\n-klassen og overskriver f\u00f8lgende:\n\n\nget\n\n\nReturnerer v\u00e6rdien gemt i \nself.rgx\n, men indsat i brackets.\n\n\nfrom mre import Set\n\nregex_set = Set(\"0-9\")\nprint(regex_set.get())  # \"[0-9]\"\n\n\n\n\nquantifier\n\n\nReturnerer et nyt \nRegex\n-objekt med en quantifier for det p\u00e5g\u00e6ldende set.\n\n\nfrom mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"\n\nprint(type(regex_set))  # <class 'mre.Set.Set'>\nprint(type(regex_set.quantifier(3)))  # <class 'mre.Regex.Regex'>\n\n\n\n\nGroup\n\n\nDenne klasse repr\u00e6senterer en gruppe i RegEx. Konstrukt\u00f8ren har to parametre:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nStandardv\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nregex\n\n\nstr\n, \nint\n, \nRegex\n\n\n\"\"\n\n\n\n\n\n\nnon_capturing\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nHvis argumentet for \nnon_capturing\n er \nTrue\n, tilf\u00f8jes symbolet der angiver \nRegEx Engine\n til at returnere en ikke-indfangende gruppe (\n?:\n).\n\n\nfrom mre import Group\n\nregex_group_one = Group('<h1>') + Group('[\\w\\s]+') + Group('</h1>')\nregex_group_two = Group('<h1>', True) + Group('[\\w\\s]+') + Group('</h1>', True)\n\nprint(regex_group_one)  # (<h1>)([\\w\\s]+)(</h1>)\nprint(regex_group_two)  # (?:<h1>)([\\w\\s]+)(?:</h1>)\n\n\n\n\nMetoder\n\n\nDenne klasse nedarver metoderne fra \nRegex\n-klassen og overskriver f\u00f8lgende:\n\n\nget\n\n\nReturnerer v\u00e6rdien gemt i \nself.rgx\n, men indsat i parenteser.\n\n\nfrom mre import Group\n\nregex_group_one = Group(\"<h1>\")\nregex_group_two = Group(\"</h1>\", True)\n\nprint(regex_group_one.get())  # \"(<h1>)\"\nprint(regex_group_two.get())  # \"(?:</h1>)\"\n\n\n\n\nquantifier\n\n\nReturnerer et nyt \nRegex\n-objekt med en quantifier til gruppen.\n\n\nfrom mre import Group\n\nregex_group = Group(\"<h1>\")\n\nprint(regex_group)  # \"(<h1>)\"\nprint(regex_group.quantifier(3))  # \"(<h1>){3}\"\n\nprint(type(regex_group))  # <class 'mre.Group.Group'>\nprint(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>\n\n\n\n\nAnchor\n\n\nDenne klasse repr\u00e6senterer et forankret RegEx (RegEx'et skal starte og slutte som defineret). Konstrukt\u00f8ren har to parametre:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nStandardv\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nregex\n\n\nstr\n, \nint\n, \nRegex\n\n\n\"\"\n\n\n\n\n\n\nnegate\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nHvis argumentet for \nnegate\n er \nTrue\n, tilf\u00f8jes det inverse m\u00f8nster, som i at RegEx'et ikke m\u00e5 starte og slutte som defineret.\n\n\nfrom mre import Anchor\n\nregex_anchor_one = Anchor(\"\\\\d{4}-\\\\w+.txt\")\nregex_anchor_two = Anchor(\"\\\\d{4}-\\\\w+.txt\", True)\n\nprint(regex_anchor_one)  # \"^\\d{4}-\\w+.txt$\"\nprint(regex_anchor_two)  # \"\\b\\d{4}-\\w+.txt\\B\"\n\n\n\n\nMetoder\n\n\nDenne klasse nedarver metoderne fra \nRegex\n-klassen og overskriver f\u00f8lgende:\n\n\nget\n\n\nReturnerer v\u00e6rdien gemt i \nself.rgx\n, men forankret.\n\n\nfrom mre import Anchor\n\nregex_anchor_one = Anchor(\"<h1>Hello world<\\/h1>\")\nregex_anchor_two = Anchor(\"<h1>Hello world<\\/h1>\", True)\n\nprint(regex_anchor_one.get())  # \"^<h1>Hello world</h1>$\"\nprint(regex_anchor_two.get())  # \"\\b<h1>Hello world</h1>\\B\"\n\n\n\n\nhelper.Range\n\n\nDenne klasse er ment til at hj\u00e6lpe med at lave et RegEx, der angiver en karakter-klasse i form af en \nrange\n. Konstrukt\u00f8ren har to parametre:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nStandardv\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nminimum\n\n\nstr\n, \nint\n\n\n0\n\n\n\n\n\n\nmaximum\n\n\nstr\n, \nint\n\n\n\"z\"\n\n\n\n\n\n\n\n\nIdeelt set b\u00f8r du bruge denne klasse sammen med et \nSet\n. I et \nSet\n har bindestregen en \"magisk\" v\u00e6rdi, der g\u00f8r den i stand til at tildele en r\u00e6kkevidde. Uden for et set har en bindestreg kun v\u00e6rdien af en bindestreg. S\u00e5 hvis du vil have sm\u00e5 bogstaver, skal du bruge \n[a-z]\n i stedet for \na-z\n. \na-z\n angiver, at du kun vil have v\u00e6rdierne \na\n, \n-\n og \nz\n.\n\n\nfrom mre.helper import Range\n\n# alle cifre\ndigits = Range(0, 9)\n# alle bogstaver\nletters = Range('A', 'z')\n\nprint(digits)  # \"0-9\"\nprint(letters)  # \"A-z\"\n\n\n\n\nMetoder\n\n\nDenne klasse nedarver metoderne fra \nRegex\n-klassen og har dens egne metoder.\n\n\ndigits\n\n\nHar to parametre:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nStandardv\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nminimum\n\n\nint\n\n\n0\n\n\n\n\n\n\nmaximum\n\n\nint\n\n\n9\n\n\n\n\n\n\n\n\nReturnerer en \nrange\n, der er defineret som cifrene mellem \nminimum\n og \nmaximum\n.\n\n\nfrom mre.helper import Range\n\nregex_range_one = Range(0, 9)\nregex_range_two = Range().digits()\nregex_range_three = Range(0, 6)\nregex_range_four = Range().digits(0, 6)\n\nprint(regex_range_one)  # \"0-9\"\nprint(regex_range_two)  # \"0-9\"\nprint(regex_range_three)  # \"0-6\"\nprint(regex_range_four)  # \"0-6\"\n\n\n\n\nletters\n\n\nHar fire parametre:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nStandardv\u00e6rdi\n\n\n\n\n\n\n\n\n\n\nminimum\n\n\nchr\n\n\nA\n\n\n\n\n\n\nmaximum\n\n\nchr\n\n\nz\n\n\n\n\n\n\nuppercase\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\nlowercase\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nReturnerer en \nrange\n, der er defineret som bogstaverne mellem \nminimum\n og \nmaximum\n.\n\n\nfrom mre.helper import Range\n\n# alle bogstaver\nregex_range_one = Range('A', 'z')\nregex_range_two = Range().letters()\nregex_range_three = Range().letters('A', 'z')\nregex_range_four = Range().letters(uppercase=True, lowercase=True)\n# alle store bogstaver\nregex_range_five = Range().letters(uppercase=True)\n# alle sm\u00e5 bogstaver\nregex_range_six = Range().letters(lowercase=True)\n\nprint(regex_range_one)  # \"A-z\"\nprint(regex_range_two)  # \"A-z\"\nprint(regex_range_three)  # \"A-z\"\nprint(regex_range_four)  # \"A-z\"\nprint(regex_range_five)  # \"A-Z\"\nprint(regex_range_six)  # \"a-z\"\n\n\n\n\nEksempler\n\n\nTo m\u00e5der at lave et RegEx for et \nCEP\n (braziliansk postnummer) (\n[0-9]{5}-?[0-9]{3}\n):\n\n\nfrom mre import Regex, Set\n\n# alle cifre\ndigits = Set(Regex(\"0-9\"))\n\nrgx_cep = Regex(\n    digits.quantifier(5),\n    Regex(\"-\").quantifier(0, 1),\n    digits.quantifier(3),\n)\n\n\n\n\nfrom mre import Regex, Quantifier, Set\nfrom mre.helper import Range\n\n# alle cifre [0-9]\ndigits = Set(Range().digits())\n# bindestregen m\u00e5 forekomme nul eller \u00e9n gange\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cep = Regex(\n    digits.quantifier(5), hyphen,\n    digits.quantifier(3),\n)\n\n\n\n\nRegEx for et \nCPF\n (braziliansk registernummer for skatteydere) (\n[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}\n):\n\n\nfrom mre import Regex, Set\nfrom mre.helper import Range\n\n# alle cifre\nall_digits = Set(Range(0, 9))\n# punktummet m\u00e5 forekomme nul eller \u00e9n gange\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# bindestregen m\u00e5 forekomme nul eller \u00e9n gange\nhyphen = Regex('-').quantifier(0, 1)\n\nrgx_cpf = Regex(\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), hyphen,\n    all_digits.quantifier(2),\n)\n\n\n\n\nRegEx for et \nCNPJ\n (ID i det brazilianske National Registry of Legal Entities) (\n\\d{2}\\.?\\d{3}\\.?\\d{3}\\/?\\d{4}\\-?\\d{2}\n):\n\n\nfrom mre import Regex, Quantifier\n\n# alle cifre\ndigits = Regex(Regex.DIGIT)\n# punktummet m\u00e5 forekomme nul eller \u00e9n gange\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# skr\u00e5stregen m\u00e5 forekomme nul eller \u00e9n gange\nslash = Regex(Regex.SLASH).quantifier(0, 1)\n# bindestregen m\u00e5 forekomme nul eller \u00e9n gange\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cnpj = Regex(\n    digits.quantifier(2), dot,\n    digits.quantifier(3), dot,\n    digits.quantifier(3), slash,\n    digits.quantifier(4), hyphen,\n    digits.quantifier(2),\n)",
+            "title": "Brugsanvisning"
+        },
+        {
+            "location": "/dk/brugsanvisning/#klasser",
+            "text": "Regex  Quantifier  Set  Group  Anchor  Helper  Range",
+            "title": "Klasser"
+        },
+        {
+            "location": "/dk/brugsanvisning/#regex",
+            "text": "Dette er for\u00e6ldreklassen til alle andre klasser i denne pakke. RegEx'et h\u00e5ndteres i variablen  self.rgx . Konstrukt\u00f8ren kan modtage et hvilket som helst antal af argumenter, men de skal v\u00e6re af en af f\u00f8lgende typer:  str ,  int  eller  Regex -klassen selv. For bedre forst\u00e5else:   str : konkatenerer til variablen  self.rgx ;  int : laver  backreferences ;  Regex : konkatenerer v\u00e6rdien af  self.rgx  for det videregivne objekt til  self.rgx -variablen af det modtagende objekt.   M\u00e5der at erkl\u00e6re et  Regex :  from mre import Regex, Group\n\nrgx_one = Regex(\"Hello world\")  # Hello world\nrgx_two = Regex(\"Hello\", \" world\")  # Hello world\nrgx_three = Regex(\"Hello\") + \" \" + Regex(\"world\")  # Hello world\nrgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>\nrgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\\/\\1>",
+            "title": "Regex"
+        },
+        {
+            "location": "/dk/brugsanvisning/#konstanter",
+            "text": "Konstanter tilg\u00e6ngelige i  Regex -klassen:     Konstant  V\u00e6rdi      ANY  .    DOT  \\\\.    DIGIT  \\\\d    WHITESPACE  \\\\s    WORD_CHARS  \\\\w    SLASH  \\\\/.    NOT_DIGIT  \\\\D    NOT_WHITESPACE  \\\\S    NOT_WORD_CHARS  \\\\W    ZERO_OR_ONE  ?    ZERO_OR_MULTIPLE  *    ONE_OR_MULTIPLE  +    HYPHEN  \\\\-",
+            "title": "Konstanter"
+        },
+        {
+            "location": "/dk/brugsanvisning/#metoder",
+            "text": "Beskrivelser af metoder og overloads.",
+            "title": "Metoder"
+        },
+        {
+            "location": "/dk/brugsanvisning/#9595str9595",
+            "text": "Returnerer v\u00e6rdien gemt i  self.rgx .  from mre import Regex\n\nregex = Regex(\"Hello world\")\nprint(regex)  # \"Hello world\"",
+            "title": "__str__"
+        },
+        {
+            "location": "/dk/brugsanvisning/#9595eq9595",
+            "text": "Sammenligninger er mulige mellem typerne  str  og  Regex :   == str : sammenligner  self.rgx  med v\u00e6rdien af den videregivne variabel;  == Regex : sammenligner  self.rgx  (tilg\u00e5et via  get -metoden) med v\u00e6rdien af  self.rgx  for det videregivne objekt (ogs\u00e5 tilg\u00e5et via  get -metoden).   from mre import Regex\n\nregex_one = Regex(\"Hello world\")\n\nprint(regex_one == \"Hello world\")  # True\nprint(regex_one == \"Hello world!\")  # False\n\nprint(regex_one == Regex(\"Hello world\"))  # True\nprint(regex_one == Regex(\"Hello world!\"))  # False",
+            "title": "__eq__"
+        },
+        {
+            "location": "/dk/brugsanvisning/#9595iadd9595",
+            "text": "Forventer variable af typerne  str  og  Regex . For bedre forst\u00e5else:   += str : konkatenerer  self.rgx  med v\u00e6rdien af den videregivne variabel;  += Regex : konkatenerer  self.rgx  med v\u00e6rdien af variablen  self.rgx  for det videregivne objekt (tilg\u00e5et via  get -metoden).   Overloadet \u00e6ndrer direkte v\u00e6rdien af  self.rgx . I tilf\u00e6lde af operationer som  Set  af et objekt, vil det \u00e6ndres til v\u00e6rdien indsat mellem to brackets.  from mre import Regex, Set\n\nregex = Regex(\"Hello\")\nregex += \" world\"\nprint(regex)  # \"Hello world\"\n\nregex_set = Set(\"Hello\")  # [Hello]\nregex_set += \" world\"\nprint(regex_set)  # \"[Hello world]\"",
+            "title": "__iadd__"
+        },
+        {
+            "location": "/dk/brugsanvisning/#9595add9595",
+            "text": "Forventer variable af typerne  str  og  Regex . I mods\u00e6tning til overloadet af  __iadd__ , returnerer dette overload et nyt  Regex -objekt.   + str : konkatenerer  self.rgx  (tilg\u00e5et via  get -metoden) med v\u00e6rdien af den videregivne variabel;  + Regex : konkatenerer  self.rgx  (tilg\u00e5et via  get -metoden) med v\u00e6rdien af  self.rgx  for det videregivne objekt (ogs\u00e5 tilg\u00e5et via  get -metoden).   from mre import Regex\n\nregex_one = Regex(\"Hello\") + \" \" + Regex(\"world\")\nregex_two = Regex(\"Hello\") + Regex(\" world\")\n\nprint(regex_one)  # \"Hello world\"\nprint(regex_two)  # \"Hello world\"",
+            "title": "__add__"
+        },
+        {
+            "location": "/dk/brugsanvisning/#get",
+            "text": "Returnerer v\u00e6rdien gemt i  self.rgx .  from mre import Regex\n\nregex = Regex(\"stored value\")\nprint(regex.get())  # \"stored value\"",
+            "title": "get"
+        },
+        {
+            "location": "/dk/brugsanvisning/#quantifier",
+            "text": "Har f\u00f8lgende parametre:     Parameter  Type  Standardv\u00e6rdi      n  int  0    m  int  0    without_maximum  bool  False     Brugt til at kvantificere hvor ofte et Regex m\u00e5/burde optr\u00e6de (fra  n  til  m ). Returnerer et nyt  Regex .  I s\u00e6rlige tilf\u00e6lde bliver et symbol tilf\u00f8jet. Disse tilf\u00e6lde er:     n  m  without_maximum  Symbol  Adgang      0  1  -  ?  Regex.ZERO_OR_ONE    0  -  True  *  Regex.ZERO_OR_MULTIPLE    1  -  True  +  Regex.ONE_OR_MULTIPLE     Udover disse s\u00e6rlige tilf\u00e6lde kan kvantificering forekomme som f\u00f8lgende:   {n} : b\u00f8r forekomme  n  gange;  {n, m} : kan forekomme fra  n  op til  m  gange.   from mre import Regex\n\ndigits = Regex(\"[0-9]\")\n\nprint(digits.quantifier(3))  # \"[0-9]{3}\"\nprint(digits.quantifier(3, 5))  # \"[0-9]{3,5}\"\nprint(digits.quantifier(0, 1))  # \"[0-9]?\"\nprint(digits.quantifier(0, without_maximum=True))  # \"[0-9]*\"\nprint(digits.quantifier(1, without_maximum=True))  # \"[0-9]+\"",
+            "title": "quantifier"
+        },
+        {
+            "location": "/dk/brugsanvisning/#backreferences",
+            "text": "Har et parameter af typen  int  ( group_n ), som bruges til at angive hvilken gruppe du vil bruge til at lave en  backreference . Returnerer et  Regex , som laver  backreferences  af den angivne gruppe.  En alternativ m\u00e5de at kalde denne metode p\u00e5 er ved at give en  int  til konstrukt\u00f8ren.  from mre import Regex\n\nregex_one = Regex().backreferences(1)\nregex_two = Regex(2)\n\nprint(regex_one)  # \"\\1\"\nprint(regex_two)  # \"\\2\"",
+            "title": "backreferences"
+        },
+        {
+            "location": "/dk/brugsanvisning/#quantifier_1",
+            "text": "Denne klasse fungerer som et alternativ til at kalde  Regex.quantifier . Konstrukt\u00f8ren har fire parametre:     Parameter  Type  Standardv\u00e6rdi      regex  str ,  int ,  Regex  \"\"    n  int  0    m  int  0    without_maximum  bool  False     Det f\u00f8rste parameter referer til det RegEx, du vil lave. De andre tre bruges til at kalde metoden  Regex.quantifier .  from mre import Regex, Quantifier\n\ndigits_one = Regex(\"[0-9]\").quantifier(3, 5)\ndigits_two = Quantifier(\"[0-9]\", 3, 5)\n\nprint(digits_one)  # \"[0-9]{3,5}\"\nprint(digits_two)  # \"[0-9]{3,5}\"",
+            "title": "Quantifier"
+        },
+        {
+            "location": "/dk/brugsanvisning/#set",
+            "text": "Denne klasse repr\u00e6senterer et set i RegEx. Konstrukt\u00f8ren er identisk til  Regex .  from mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"",
+            "title": "Set"
+        },
+        {
+            "location": "/dk/brugsanvisning/#metoder_1",
+            "text": "Denne klasse nedarver metoderne fra  Regex -klassen og overskriver f\u00f8lgende:",
+            "title": "Metoder"
+        },
+        {
+            "location": "/dk/brugsanvisning/#get_1",
+            "text": "Returnerer v\u00e6rdien gemt i  self.rgx , men indsat i brackets.  from mre import Set\n\nregex_set = Set(\"0-9\")\nprint(regex_set.get())  # \"[0-9]\"",
+            "title": "get"
+        },
+        {
+            "location": "/dk/brugsanvisning/#quantifier_2",
+            "text": "Returnerer et nyt  Regex -objekt med en quantifier for det p\u00e5g\u00e6ldende set.  from mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"\n\nprint(type(regex_set))  # <class 'mre.Set.Set'>\nprint(type(regex_set.quantifier(3)))  # <class 'mre.Regex.Regex'>",
+            "title": "quantifier"
+        },
+        {
+            "location": "/dk/brugsanvisning/#group",
+            "text": "Denne klasse repr\u00e6senterer en gruppe i RegEx. Konstrukt\u00f8ren har to parametre:     Parameter  Type  Standardv\u00e6rdi      regex  str ,  int ,  Regex  \"\"    non_capturing  bool  False     Hvis argumentet for  non_capturing  er  True , tilf\u00f8jes symbolet der angiver  RegEx Engine  til at returnere en ikke-indfangende gruppe ( ?: ).  from mre import Group\n\nregex_group_one = Group('<h1>') + Group('[\\w\\s]+') + Group('</h1>')\nregex_group_two = Group('<h1>', True) + Group('[\\w\\s]+') + Group('</h1>', True)\n\nprint(regex_group_one)  # (<h1>)([\\w\\s]+)(</h1>)\nprint(regex_group_two)  # (?:<h1>)([\\w\\s]+)(?:</h1>)",
+            "title": "Group"
+        },
+        {
+            "location": "/dk/brugsanvisning/#metoder_2",
+            "text": "Denne klasse nedarver metoderne fra  Regex -klassen og overskriver f\u00f8lgende:",
+            "title": "Metoder"
+        },
+        {
+            "location": "/dk/brugsanvisning/#get_2",
+            "text": "Returnerer v\u00e6rdien gemt i  self.rgx , men indsat i parenteser.  from mre import Group\n\nregex_group_one = Group(\"<h1>\")\nregex_group_two = Group(\"</h1>\", True)\n\nprint(regex_group_one.get())  # \"(<h1>)\"\nprint(regex_group_two.get())  # \"(?:</h1>)\"",
+            "title": "get"
+        },
+        {
+            "location": "/dk/brugsanvisning/#quantifier_3",
+            "text": "Returnerer et nyt  Regex -objekt med en quantifier til gruppen.  from mre import Group\n\nregex_group = Group(\"<h1>\")\n\nprint(regex_group)  # \"(<h1>)\"\nprint(regex_group.quantifier(3))  # \"(<h1>){3}\"\n\nprint(type(regex_group))  # <class 'mre.Group.Group'>\nprint(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>",
+            "title": "quantifier"
+        },
+        {
+            "location": "/dk/brugsanvisning/#anchor",
+            "text": "Denne klasse repr\u00e6senterer et forankret RegEx (RegEx'et skal starte og slutte som defineret). Konstrukt\u00f8ren har to parametre:     Parameter  Type  Standardv\u00e6rdi      regex  str ,  int ,  Regex  \"\"    negate  bool  False     Hvis argumentet for  negate  er  True , tilf\u00f8jes det inverse m\u00f8nster, som i at RegEx'et ikke m\u00e5 starte og slutte som defineret.  from mre import Anchor\n\nregex_anchor_one = Anchor(\"\\\\d{4}-\\\\w+.txt\")\nregex_anchor_two = Anchor(\"\\\\d{4}-\\\\w+.txt\", True)\n\nprint(regex_anchor_one)  # \"^\\d{4}-\\w+.txt$\"\nprint(regex_anchor_two)  # \"\\b\\d{4}-\\w+.txt\\B\"",
+            "title": "Anchor"
+        },
+        {
+            "location": "/dk/brugsanvisning/#metoder_3",
+            "text": "Denne klasse nedarver metoderne fra  Regex -klassen og overskriver f\u00f8lgende:",
+            "title": "Metoder"
+        },
+        {
+            "location": "/dk/brugsanvisning/#get_3",
+            "text": "Returnerer v\u00e6rdien gemt i  self.rgx , men forankret.  from mre import Anchor\n\nregex_anchor_one = Anchor(\"<h1>Hello world<\\/h1>\")\nregex_anchor_two = Anchor(\"<h1>Hello world<\\/h1>\", True)\n\nprint(regex_anchor_one.get())  # \"^<h1>Hello world</h1>$\"\nprint(regex_anchor_two.get())  # \"\\b<h1>Hello world</h1>\\B\"",
+            "title": "get"
+        },
+        {
+            "location": "/dk/brugsanvisning/#helperrange",
+            "text": "Denne klasse er ment til at hj\u00e6lpe med at lave et RegEx, der angiver en karakter-klasse i form af en  range . Konstrukt\u00f8ren har to parametre:     Parameter  Type  Standardv\u00e6rdi      minimum  str ,  int  0    maximum  str ,  int  \"z\"     Ideelt set b\u00f8r du bruge denne klasse sammen med et  Set . I et  Set  har bindestregen en \"magisk\" v\u00e6rdi, der g\u00f8r den i stand til at tildele en r\u00e6kkevidde. Uden for et set har en bindestreg kun v\u00e6rdien af en bindestreg. S\u00e5 hvis du vil have sm\u00e5 bogstaver, skal du bruge  [a-z]  i stedet for  a-z .  a-z  angiver, at du kun vil have v\u00e6rdierne  a ,  -  og  z .  from mre.helper import Range\n\n# alle cifre\ndigits = Range(0, 9)\n# alle bogstaver\nletters = Range('A', 'z')\n\nprint(digits)  # \"0-9\"\nprint(letters)  # \"A-z\"",
+            "title": "helper.Range"
+        },
+        {
+            "location": "/dk/brugsanvisning/#metoder_4",
+            "text": "Denne klasse nedarver metoderne fra  Regex -klassen og har dens egne metoder.",
+            "title": "Metoder"
+        },
+        {
+            "location": "/dk/brugsanvisning/#digits",
+            "text": "Har to parametre:     Parameter  Type  Standardv\u00e6rdi      minimum  int  0    maximum  int  9     Returnerer en  range , der er defineret som cifrene mellem  minimum  og  maximum .  from mre.helper import Range\n\nregex_range_one = Range(0, 9)\nregex_range_two = Range().digits()\nregex_range_three = Range(0, 6)\nregex_range_four = Range().digits(0, 6)\n\nprint(regex_range_one)  # \"0-9\"\nprint(regex_range_two)  # \"0-9\"\nprint(regex_range_three)  # \"0-6\"\nprint(regex_range_four)  # \"0-6\"",
+            "title": "digits"
+        },
+        {
+            "location": "/dk/brugsanvisning/#letters",
+            "text": "Har fire parametre:     Parameter  Type  Standardv\u00e6rdi      minimum  chr  A    maximum  chr  z    uppercase  bool  False    lowercase  bool  False     Returnerer en  range , der er defineret som bogstaverne mellem  minimum  og  maximum .  from mre.helper import Range\n\n# alle bogstaver\nregex_range_one = Range('A', 'z')\nregex_range_two = Range().letters()\nregex_range_three = Range().letters('A', 'z')\nregex_range_four = Range().letters(uppercase=True, lowercase=True)\n# alle store bogstaver\nregex_range_five = Range().letters(uppercase=True)\n# alle sm\u00e5 bogstaver\nregex_range_six = Range().letters(lowercase=True)\n\nprint(regex_range_one)  # \"A-z\"\nprint(regex_range_two)  # \"A-z\"\nprint(regex_range_three)  # \"A-z\"\nprint(regex_range_four)  # \"A-z\"\nprint(regex_range_five)  # \"A-Z\"\nprint(regex_range_six)  # \"a-z\"",
+            "title": "letters"
+        },
+        {
+            "location": "/dk/brugsanvisning/#eksempler",
+            "text": "To m\u00e5der at lave et RegEx for et  CEP  (braziliansk postnummer) ( [0-9]{5}-?[0-9]{3} ):  from mre import Regex, Set\n\n# alle cifre\ndigits = Set(Regex(\"0-9\"))\n\nrgx_cep = Regex(\n    digits.quantifier(5),\n    Regex(\"-\").quantifier(0, 1),\n    digits.quantifier(3),\n)  from mre import Regex, Quantifier, Set\nfrom mre.helper import Range\n\n# alle cifre [0-9]\ndigits = Set(Range().digits())\n# bindestregen m\u00e5 forekomme nul eller \u00e9n gange\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cep = Regex(\n    digits.quantifier(5), hyphen,\n    digits.quantifier(3),\n)  RegEx for et  CPF  (braziliansk registernummer for skatteydere) ( [0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2} ):  from mre import Regex, Set\nfrom mre.helper import Range\n\n# alle cifre\nall_digits = Set(Range(0, 9))\n# punktummet m\u00e5 forekomme nul eller \u00e9n gange\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# bindestregen m\u00e5 forekomme nul eller \u00e9n gange\nhyphen = Regex('-').quantifier(0, 1)\n\nrgx_cpf = Regex(\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), hyphen,\n    all_digits.quantifier(2),\n)  RegEx for et  CNPJ  (ID i det brazilianske National Registry of Legal Entities) ( \\d{2}\\.?\\d{3}\\.?\\d{3}\\/?\\d{4}\\-?\\d{2} ):  from mre import Regex, Quantifier\n\n# alle cifre\ndigits = Regex(Regex.DIGIT)\n# punktummet m\u00e5 forekomme nul eller \u00e9n gange\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# skr\u00e5stregen m\u00e5 forekomme nul eller \u00e9n gange\nslash = Regex(Regex.SLASH).quantifier(0, 1)\n# bindestregen m\u00e5 forekomme nul eller \u00e9n gange\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cnpj = Regex(\n    digits.quantifier(2), dot,\n    digits.quantifier(3), dot,\n    digits.quantifier(3), slash,\n    digits.quantifier(4), hyphen,\n    digits.quantifier(2),\n)",
+            "title": "Eksempler"
+        },
+        {
+            "location": "/dk/",
+            "text": "MRE\n\n\nEn Python-pakke til at lave regul\u00e6re udtryk (RegEx). Pakkens form\u00e5l er at g\u00f8re det mere letl\u00e6seligt at lave RegEx.\n\n\nInstallering af MRE\n\n\nInstaller MRE-pakken ved brug af pip:\n\n\npip install mre",
+            "title": "Home"
+        },
+        {
+            "location": "/dk/#mre",
+            "text": "En Python-pakke til at lave regul\u00e6re udtryk (RegEx). Pakkens form\u00e5l er at g\u00f8re det mere letl\u00e6seligt at lave RegEx.",
+            "title": "MRE"
+        },
+        {
+            "location": "/dk/#installering-af-mre",
+            "text": "Installer MRE-pakken ved brug af pip:  pip install mre",
+            "title": "Installering af MRE"
+        },
+        {
+            "location": "/en_US/how-to-use/",
             "text": "Classes\n\n\n\n\nRegex\n\n\nQuantifier\n\n\nSet\n\n\nGroup\n\n\nAnchor\n\n\nHelper\n\n\nRange\n\n\n\n\n\n\n\n\nRegex\n\n\nThis is the parent class of all other classes in this package, the RegEx is being handled in variable \nself.rgx\n. Your constructor can receive any number of inputs, but they require the following types: \nstr\n, \nint\n and the \nRegex\n class itself. For better understanding:\n\n\n\n\nstr\n: concatenates to variable \nself.rgx\n;\n\n\nint\n: performs \nbackreferences\n;\n\n\nRegex\n: concatenates the value of \nself.rgx\n of the passed object to variable \nself.rgx\n of the receiving object.\n\n\n\n\nWays to declare a \nRegex\n:\n\n\nfrom mre import Regex, Group\n\nrgx_one = Regex(\"Hello world\")  # Hello world\nrgx_two = Regex(\"Hello\", \" world\")  # Hello world\nrgx_three = Regex(\"Hello\") + \" \" + Regex(\"world\")  # Hello world\nrgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>\nrgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\\/\\1>\n\n\n\n\nConstants\n\n\nConstants available in class \nRegex\n:\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nANY\n\n\n.\n\n\n\n\n\n\nDOT\n\n\n\\\\.\n\n\n\n\n\n\nDIGIT\n\n\n\\\\d\n\n\n\n\n\n\nWHITESPACE\n\n\n\\\\s\n\n\n\n\n\n\nWORD_CHARS\n\n\n\\\\w\n\n\n\n\n\n\nSLASH\n\n\n\\\\/.\n\n\n\n\n\n\nNOT_DIGIT\n\n\n\\\\D\n\n\n\n\n\n\nNOT_WHITESPACE\n\n\n\\\\S\n\n\n\n\n\n\nNOT_WORD_CHARS\n\n\n\\\\W\n\n\n\n\n\n\nZERO_OR_ONE\n\n\n?\n\n\n\n\n\n\nZERO_OR_MULTIPLE\n\n\n*\n\n\n\n\n\n\nONE_OR_MULTIPLE\n\n\n+\n\n\n\n\n\n\nHYPHEN\n\n\n\\\\-\n\n\n\n\n\n\n\n\nMethods\n\n\nDescriptions of methods and overloads.\n\n\n__str__\n\n\nReturns the value stored in \nself.rgx\n.\n\n\nfrom mre import Regex\n\nregex = Regex(\"Hello world\")\nprint(regex)  # \"Hello world\"\n\n\n\n\n__eq__\n\n\nComparisons are possible with \nstr\n and \nRegex\n type:\n- \n== str\n: compares \nself.rgx\n to the value of the passed variable;\n- \n== Regex\n: compares \nself.rgx\n (accessed via method \nget\n) to the value of \nself.rgx\n of the passed object (also accessed via method \nget\n).\n\n\nfrom mre import Regex\n\nregex_one = Regex(\"Hello world\")\n\nprint(regex_one == \"Hello world\")  # True\nprint(regex_one == \"Hello world!\")  # False\n\nprint(regex_one == Regex(\"Hello world\"))  # True\nprint(regex_one == Regex(\"Hello world!\"))  # False\n\n\n\n\n__iadd__\n\n\nExpects variables of type \nstr\n and \nRegex\n. For better understanding:\n\n\n\n\n+= str\n: concatenates \nself.rgx\n with the value of the passed variable;\n\n\n+= Regex\n: concatenates \nself.rgx\n with the value of variable \nself.rgx\n of the passed object (accessed via method \nget\n).\n\n\n\n\nThe overload directly changes the value of \nself.rgx\n. In case of operations like \nSet\n of an object, it will change to the value between to brackets.\n\n\nfrom mre import Regex, Set\n\nregex = Regex(\"Hello\")\nregex += \" world\"\nprint(regex)  # \"Hello world\"\n\nregex_set = Set(\"Hello\")  # [Hello]\nregex_set += \" world\"\nprint(regex_set)  # \"[Hello world]\"\n\n\n\n\n__add__\n\n\nExpects variables of type \nstr\n and \nRegex\n. Unlike the overload of \n__iadd__\n, this overload returns a new \nRegex\n object.\n\n\n\n\n+ str\n: concatenates \nself.rgx\n (accessed via method \nget\n) with the value of the passed variable;\n\n\n+ Regex\n: concatenates \nself.rgx\n (accessed via method \nget\n) with the value of \nself.rgx\n of the passed object (also accessed via method \nget\n).\n\n\n\n\nfrom mre import Regex\n\nregex_one = Regex(\"Hello\") + \" \" + Regex(\"world\")\nregex_two = Regex(\"Hello\") + Regex(\" world\")\n\nprint(regex_one)  # \"Hello world\"\nprint(regex_two)  # \"Hello world\"\n\n\n\n\nget\n\n\nReturns the value stored in \nself.rgx\n.\n\n\nfrom mre import Regex\n\nregex = Regex(\"stored value\")\nprint(regex.get())  # \"stored value\"\n\n\n\n\nquantifier\n\n\nHas the following parameters:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\nDefault value\n\n\n\n\n\n\n\n\n\n\nn\n\n\nint\n\n\n0\n\n\n\n\n\n\nm\n\n\nint\n\n\n0\n\n\n\n\n\n\nwithout_maximum\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nUsed to quantify how often a Regex may/should appear (from \nn\n to \nm\n). Returns a new \nRegex\n.\n\n\nIn specific cases, a symbol is added. These cases are:\n\n\n\n\n\n\n\n\nn\n\n\nm\n\n\nwithout_maximum\n\n\nSymbol\n\n\nAccess\n\n\n\n\n\n\n\n\n\n\n0\n\n\n1\n\n\n-\n\n\n?\n\n\nRegex.ZERO_OR_ONE\n\n\n\n\n\n\n0\n\n\n-\n\n\nTrue\n\n\n*\n\n\nRegex.ZERO_OR_MULTIPLE\n\n\n\n\n\n\n1\n\n\n-\n\n\nTrue\n\n\n+\n\n\nRegex.ONE_OR_MULTIPLE\n\n\n\n\n\n\n\n\nIn addition to these specific cases, quantification may occur as follows:\n- \n{n}\n: should occur \nn\n times;\n- \n{n, m}\n: may occur from \nn\n up to \nm\n times.\n\n\nfrom mre import Regex\n\ndigits = Regex(\"[0-9]\")\n\nprint(digits.quantifier(3))  # \"[0-9]{3}\"\nprint(digits.quantifier(3, 5))  # \"[0-9]{3,5}\"\nprint(digits.quantifier(0, 1))  # \"[0-9]?\"\nprint(digits.quantifier(0, without_maximum=True))  # \"[0-9]*\"\nprint(digits.quantifier(1, without_maximum=True))  # \"[0-9]+\"\n\n\n\n\nbackreferences\n\n\nHas a parameter of type \nint\n (\ngroup_n\n) which is used to indicate which group you want to perform a \nbackreference\n. Returns a \nRegex\n which performs \nbackreferences\n of the indicated group.\n\n\nAn alternative way of calling this method, is providing an \nint\n to the constructor.\n\n\nfrom mre import Regex\n\nregex_one = Regex().backreferences(1)\nregex_two = Regex(2)\n\nprint(regex_one)  # \"\\1\"\nprint(regex_two)  # \"\\2\"\n\n\n\n\nQuantifier\n\n\nThis class serves as an alternative to calling \nRegex.quantifier\n. The constructor has 4 parameters:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\ndefault value\n\n\n\n\n\n\n\n\n\n\nregex\n\n\nstr\n, \nint\n, \nRegex\n\n\n\"\"\n\n\n\n\n\n\nn\n\n\nint\n\n\n0\n\n\n\n\n\n\nm\n\n\nint\n\n\n0\n\n\n\n\n\n\nwithout_maximum\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nThe first parameter refers to the RegEx you want to create, the other three are used to call method \nRegex.quantifier\n.\n\n\nfrom mre import Regex, Quantifier\n\ndigits_one = Regex(\"[0-9]\").quantifier(3, 5)\ndigits_two = Quantifier(\"[0-9]\", 3, 5)\n\nprint(digits_one)  # \"[0-9]{3,5}\"\nprint(digits_two)  # \"[0-9]{3,5}\"\n\n\n\n\nSet\n\n\nThis class represents a set in RegEx. The constructor is identical to \nRegex\n.\n\n\nfrom mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"\n\n\n\n\nMethods\n\n\nThis class inherits the methods of class \nRegex\n, overriding the following.\n\n\nget\n\n\nReturns the value stored in \nself.rgx\n, but within brackets.\n\n\nfrom mre import Set\n\nregex_set = Set(\"0-9\")\nprint(regex_set.get())  # \"[0-9]\"\n\n\n\n\nquantifier\n\n\nReturns a new \nRegex\n objects with a quantifier for the set.\n\n\nfrom mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"\n\nprint(type(regex_set))  # <class 'mre.Set.Set'>\nprint(type(regex_set.quantifier(3)))  # <class 'mre.Regex.Regex'>\n\n\n\n\nGroup\n\n\nThis class represents a group in RegEx. The constructor has two parameters:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\ndefault value\n\n\n\n\n\n\n\n\n\n\nregex\n\n\nstr\n, \nint\n, \nRegex\n\n\n\"\"\n\n\n\n\n\n\nnon_capturing\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nIf the argument for \nnon_capturing\n is \nTrue\n, the symbol indicating \nRegEx Engine\n to return a non capturing group is added(\n?:\n).\n\n\nfrom mre import Group\n\nregex_group_one = Group('<h1>') + Group('[\\w\\s]+') + Group('</h1>')\nregex_group_two = Group('<h1>', True) + Group('[\\w\\s]+') + Group('</h1>', True)\n\nprint(regex_group_one)  # (<h1>)([\\w\\s]+)(</h1>)\nprint(regex_group_two)  # (?:<h1>)([\\w\\s]+)(?:</h1>)\n\n\n\n\nMethods\n\n\nThis class inherits the methods of class \nRegex\n, overriding the following.\n\n\nget\n\n\nReturns the value stored in \nself.rgx\n, but within parentheses.\n\n\nfrom mre import Group\n\nregex_group_one = Group(\"<h1>\")\nregex_group_two = Group(\"</h1>\", True)\n\nprint(regex_group_one.get())  # \"(<h1>)\"\nprint(regex_group_two.get())  # \"(?:</h1>)\"\n\n\n\n\nquantifier\n\n\nReturns a new \nRegex\n objects with a quantifier for the group.\n\n\nfrom mre import Group\n\nregex_group = Group(\"<h1>\")\n\nprint(regex_group)  # \"(<h1>)\"\nprint(regex_group.quantifier(3))  # \"(<h1>){3}\"\n\nprint(type(regex_group))  # <class 'mre.Group.Group'>\nprint(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>\n\n\n\n\nAnchor\n\n\nThis class respresents an anchored RegEx (the RegEx must start and end as defined). The constructor has two parameters:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\ndefault value\n\n\n\n\n\n\n\n\n\n\nregex\n\n\nstr\n, \nint\n, \nRegex\n\n\n\"\"\n\n\n\n\n\n\nnegate\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nIf the argument for \nnegate\n is \nTrue\n, the inverse pattern symbol is added, i.e. the RegEx must not start and end as defined.\n\n\nfrom mre import Anchor\n\nregex_anchor_one = Anchor(\"\\\\d{4}-\\\\w+.txt\")\nregex_anchor_two = Anchor(\"\\\\d{4}-\\\\w+.txt\", True)\n\nprint(regex_anchor_one)  # \"^\\d{4}-\\w+.txt$\"\nprint(regex_anchor_two)  # \"\\b\\d{4}-\\w+.txt\\B\"\n\n\n\n\nMethods\n\n\nThis class inherits the methods of class \nRegex\n, overriding the following.\n\n\nget\n\n\nReturns the value stored in \nself.rgx\n, but anchored.\n\n\nfrom mre import Anchor\n\nregex_anchor_one = Anchor(\"<h1>Hello world<\\/h1>\")\nregex_anchor_two = Anchor(\"<h1>Hello world<\\/h1>\", True)\n\nprint(regex_anchor_one.get())  # \"^<h1>Hello world</h1>$\"\nprint(regex_anchor_two.get())  # \"\\b<h1>Hello world</h1>\\B\"\n\n\n\n\nhelper.Range\n\n\nThis class is intended to assist in creating a RegEx that indicates a character class in form of a \nrange\n. The constructor has two parameters:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\ndefault value\n\n\n\n\n\n\n\n\n\n\nminimum\n\n\nstr\n, \nint\n\n\n0\n\n\n\n\n\n\nmaximum\n\n\nstr\n, \nint\n\n\n\"z\"\n\n\n\n\n\n\n\n\nIdeally you should use this class together with a \nSet\n. Within a \nSet\n the hyphen has a \"magic\" value, that allows it to assign a range. Outside of a set a hyphen has only the hyphen value. So if you want lowercase letters, you should use \n[a-z]\n instead of \na-z\n. \na-z\n indicates you only want the values \na\n, \n-\n and \nz\n.\n\n\nfrom mre.helper import Range\n\n# all digits\ndigits = Range(0, 9)\n# all letters\nletters = Range('A', 'z')\n\nprint(digits)  # \"0-9\"\nprint(letters)  # \"A-z\"\n\n\n\n\nMethods\n\n\nThis class inherits the methods of the \nRegex\n class and has its own methods.\n\n\ndigits\n\n\nHas two parameters:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\ndefault value\n\n\n\n\n\n\n\n\n\n\nminimum\n\n\nint\n\n\n0\n\n\n\n\n\n\nmaximum\n\n\nint\n\n\n9\n\n\n\n\n\n\n\n\nReturns a \nrange\n that is defined as the digits between \nminimum\n and \nmaximum\n.\n\n\nfrom mre.helper import Range\n\nregex_range_one = Range(0, 9)\nregex_range_two = Range().digits()\nregex_range_three = Range(0, 6)\nregex_range_four = Range().digits(0, 6)\n\nprint(regex_range_one)  # \"0-9\"\nprint(regex_range_two)  # \"0-9\"\nprint(regex_range_three)  # \"0-6\"\nprint(regex_range_four)  # \"0-6\"\n\n\n\n\nletters\n\n\nHas four parameters:\n\n\n\n\n\n\n\n\nParameter\n\n\nType\n\n\ndefault value\n\n\n\n\n\n\n\n\n\n\nminimum\n\n\nchr\n\n\nA\n\n\n\n\n\n\nmaximum\n\n\nchr\n\n\nz\n\n\n\n\n\n\nuppercase\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\nlowercase\n\n\nbool\n\n\nFalse\n\n\n\n\n\n\n\n\nReturns a \nrange\n that is defined as the letters between \nminimum\n and \nmaximum\n.\n\n\nfrom mre.helper import Range\n\n# all letters\nregex_range_one = Range('A', 'z')\nregex_range_two = Range().letters()\nregex_range_three = Range().letters('A', 'z')\nregex_range_four = Range().letters(uppercase=True, lowercase=True)\n# all capital letters\nregex_range_five = Range().letters(uppercase=True)\n# all lowercase letters\nregex_range_six = Range().letters(lowercase=True)\n\nprint(regex_range_one)  # \"A-z\"\nprint(regex_range_two)  # \"A-z\"\nprint(regex_range_three)  # \"A-z\"\nprint(regex_range_four)  # \"A-z\"\nprint(regex_range_five)  # \"A-Z\"\nprint(regex_range_six)  # \"a-z\"\n\n\n\n\nExamples\n\n\n2 ways to create a RegEx for a \nCEP\n (brazilian postal code) (\n[0-9]{5}-?[0-9]{3}\n):\n\n\nfrom mre import Regex, Set\n\n# all digits\ndigits = Set(Regex(\"0-9\"))\n\nrgx_cep = Regex(\n    digits.quantifier(5),\n    Regex(\"-\").quantifier(0, 1),\n    digits.quantifier(3),\n)\n\n\n\n\nfrom mre import Regex, Quantifier, Set\nfrom mre.helper import Range\n\n# all digits [0-9]\ndigits = Set(Range().digits())\n# the hyphen may appear zero or one times\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cep = Regex(\n    digits.quantifier(5), hyphen,\n    digits.quantifier(3),\n)\n\n\n\n\nRegEx for a \nCPF\n (brazilian tax payer registry number) (\n[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}\n):\n\n\nfrom mre import Regex, Set\nfrom mre.helper import Range\n\n# all digits\nall_digits = Set(Range(0, 9))\n# the dot may appear zero or one times\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# the hyphen may appear zero or one times\nhyphen = Regex('-').quantifier(0, 1)\n\nrgx_cpf = Regex(\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), hyphen,\n    all_digits.quantifier(2),\n)\n\n\n\n\nRegEx for a \nCNPJ\n (ID in the brazilian National Registry of Legal Entities) (\n\\d{2}\\.?\\d{3}\\.?\\d{3}\\/?\\d{4}\\-?\\d{2}\n):\n\n\nfrom mre import Regex, Quantifier\n\n# all digits\ndigits = Regex(Regex.DIGIT)\n# the dot may appear zero or one times\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# the slash may appear zero or one times\nslash = Regex(Regex.SLASH).quantifier(0, 1)\n# the hyphen may appear zero or one times\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cnpj = Regex(\n    digits.quantifier(2), dot,\n    digits.quantifier(3), dot,\n    digits.quantifier(3), slash,\n    digits.quantifier(4), hyphen,\n    digits.quantifier(2),\n)",
             "title": "How to use"
         },
         {
-            "location": "/en/how-to-use/#classes",
+            "location": "/en_US/how-to-use/#classes",
             "text": "Regex  Quantifier  Set  Group  Anchor  Helper  Range",
             "title": "Classes"
         },
         {
-            "location": "/en/how-to-use/#regex",
+            "location": "/en_US/how-to-use/#regex",
             "text": "This is the parent class of all other classes in this package, the RegEx is being handled in variable  self.rgx . Your constructor can receive any number of inputs, but they require the following types:  str ,  int  and the  Regex  class itself. For better understanding:   str : concatenates to variable  self.rgx ;  int : performs  backreferences ;  Regex : concatenates the value of  self.rgx  of the passed object to variable  self.rgx  of the receiving object.   Ways to declare a  Regex :  from mre import Regex, Group\n\nrgx_one = Regex(\"Hello world\")  # Hello world\nrgx_two = Regex(\"Hello\", \" world\")  # Hello world\nrgx_three = Regex(\"Hello\") + \" \" + Regex(\"world\")  # Hello world\nrgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>\nrgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\\/\\1>",
             "title": "Regex"
         },
         {
-            "location": "/en/how-to-use/#constants",
+            "location": "/en_US/how-to-use/#constants",
             "text": "Constants available in class  Regex :     Constant  Value      ANY  .    DOT  \\\\.    DIGIT  \\\\d    WHITESPACE  \\\\s    WORD_CHARS  \\\\w    SLASH  \\\\/.    NOT_DIGIT  \\\\D    NOT_WHITESPACE  \\\\S    NOT_WORD_CHARS  \\\\W    ZERO_OR_ONE  ?    ZERO_OR_MULTIPLE  *    ONE_OR_MULTIPLE  +    HYPHEN  \\\\-",
             "title": "Constants"
         },
         {
-            "location": "/en/how-to-use/#methods",
+            "location": "/en_US/how-to-use/#methods",
             "text": "Descriptions of methods and overloads.",
             "title": "Methods"
         },
         {
-            "location": "/en/how-to-use/#9595str9595",
+            "location": "/en_US/how-to-use/#9595str9595",
             "text": "Returns the value stored in  self.rgx .  from mre import Regex\n\nregex = Regex(\"Hello world\")\nprint(regex)  # \"Hello world\"",
             "title": "__str__"
         },
         {
-            "location": "/en/how-to-use/#9595eq9595",
+            "location": "/en_US/how-to-use/#9595eq9595",
             "text": "Comparisons are possible with  str  and  Regex  type:\n-  == str : compares  self.rgx  to the value of the passed variable;\n-  == Regex : compares  self.rgx  (accessed via method  get ) to the value of  self.rgx  of the passed object (also accessed via method  get ).  from mre import Regex\n\nregex_one = Regex(\"Hello world\")\n\nprint(regex_one == \"Hello world\")  # True\nprint(regex_one == \"Hello world!\")  # False\n\nprint(regex_one == Regex(\"Hello world\"))  # True\nprint(regex_one == Regex(\"Hello world!\"))  # False",
             "title": "__eq__"
         },
         {
-            "location": "/en/how-to-use/#9595iadd9595",
+            "location": "/en_US/how-to-use/#9595iadd9595",
             "text": "Expects variables of type  str  and  Regex . For better understanding:   += str : concatenates  self.rgx  with the value of the passed variable;  += Regex : concatenates  self.rgx  with the value of variable  self.rgx  of the passed object (accessed via method  get ).   The overload directly changes the value of  self.rgx . In case of operations like  Set  of an object, it will change to the value between to brackets.  from mre import Regex, Set\n\nregex = Regex(\"Hello\")\nregex += \" world\"\nprint(regex)  # \"Hello world\"\n\nregex_set = Set(\"Hello\")  # [Hello]\nregex_set += \" world\"\nprint(regex_set)  # \"[Hello world]\"",
             "title": "__iadd__"
         },
         {
-            "location": "/en/how-to-use/#9595add9595",
+            "location": "/en_US/how-to-use/#9595add9595",
             "text": "Expects variables of type  str  and  Regex . Unlike the overload of  __iadd__ , this overload returns a new  Regex  object.   + str : concatenates  self.rgx  (accessed via method  get ) with the value of the passed variable;  + Regex : concatenates  self.rgx  (accessed via method  get ) with the value of  self.rgx  of the passed object (also accessed via method  get ).   from mre import Regex\n\nregex_one = Regex(\"Hello\") + \" \" + Regex(\"world\")\nregex_two = Regex(\"Hello\") + Regex(\" world\")\n\nprint(regex_one)  # \"Hello world\"\nprint(regex_two)  # \"Hello world\"",
             "title": "__add__"
         },
         {
-            "location": "/en/how-to-use/#get",
+            "location": "/en_US/how-to-use/#get",
             "text": "Returns the value stored in  self.rgx .  from mre import Regex\n\nregex = Regex(\"stored value\")\nprint(regex.get())  # \"stored value\"",
             "title": "get"
         },
         {
-            "location": "/en/how-to-use/#quantifier",
+            "location": "/en_US/how-to-use/#quantifier",
             "text": "Has the following parameters:     Parameter  Type  Default value      n  int  0    m  int  0    without_maximum  bool  False     Used to quantify how often a Regex may/should appear (from  n  to  m ). Returns a new  Regex .  In specific cases, a symbol is added. These cases are:     n  m  without_maximum  Symbol  Access      0  1  -  ?  Regex.ZERO_OR_ONE    0  -  True  *  Regex.ZERO_OR_MULTIPLE    1  -  True  +  Regex.ONE_OR_MULTIPLE     In addition to these specific cases, quantification may occur as follows:\n-  {n} : should occur  n  times;\n-  {n, m} : may occur from  n  up to  m  times.  from mre import Regex\n\ndigits = Regex(\"[0-9]\")\n\nprint(digits.quantifier(3))  # \"[0-9]{3}\"\nprint(digits.quantifier(3, 5))  # \"[0-9]{3,5}\"\nprint(digits.quantifier(0, 1))  # \"[0-9]?\"\nprint(digits.quantifier(0, without_maximum=True))  # \"[0-9]*\"\nprint(digits.quantifier(1, without_maximum=True))  # \"[0-9]+\"",
             "title": "quantifier"
         },
         {
-            "location": "/en/how-to-use/#backreferences",
+            "location": "/en_US/how-to-use/#backreferences",
             "text": "Has a parameter of type  int  ( group_n ) which is used to indicate which group you want to perform a  backreference . Returns a  Regex  which performs  backreferences  of the indicated group.  An alternative way of calling this method, is providing an  int  to the constructor.  from mre import Regex\n\nregex_one = Regex().backreferences(1)\nregex_two = Regex(2)\n\nprint(regex_one)  # \"\\1\"\nprint(regex_two)  # \"\\2\"",
             "title": "backreferences"
         },
         {
-            "location": "/en/how-to-use/#quantifier_1",
+            "location": "/en_US/how-to-use/#quantifier_1",
             "text": "This class serves as an alternative to calling  Regex.quantifier . The constructor has 4 parameters:     Parameter  Type  default value      regex  str ,  int ,  Regex  \"\"    n  int  0    m  int  0    without_maximum  bool  False     The first parameter refers to the RegEx you want to create, the other three are used to call method  Regex.quantifier .  from mre import Regex, Quantifier\n\ndigits_one = Regex(\"[0-9]\").quantifier(3, 5)\ndigits_two = Quantifier(\"[0-9]\", 3, 5)\n\nprint(digits_one)  # \"[0-9]{3,5}\"\nprint(digits_two)  # \"[0-9]{3,5}\"",
             "title": "Quantifier"
         },
         {
-            "location": "/en/how-to-use/#set",
+            "location": "/en_US/how-to-use/#set",
             "text": "This class represents a set in RegEx. The constructor is identical to  Regex .  from mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"",
             "title": "Set"
         },
         {
-            "location": "/en/how-to-use/#methods_1",
+            "location": "/en_US/how-to-use/#methods_1",
             "text": "This class inherits the methods of class  Regex , overriding the following.",
             "title": "Methods"
         },
         {
-            "location": "/en/how-to-use/#get_1",
+            "location": "/en_US/how-to-use/#get_1",
             "text": "Returns the value stored in  self.rgx , but within brackets.  from mre import Set\n\nregex_set = Set(\"0-9\")\nprint(regex_set.get())  # \"[0-9]\"",
             "title": "get"
         },
         {
-            "location": "/en/how-to-use/#quantifier_2",
+            "location": "/en_US/how-to-use/#quantifier_2",
             "text": "Returns a new  Regex  objects with a quantifier for the set.  from mre import Set\n\nregex_set = Set(\"0-9\")\n\nprint(regex_set)  # \"[0-9]\"\nprint(regex_set.quantifier(3))  # \"[0-9]{3}\"\n\nprint(type(regex_set))  # <class 'mre.Set.Set'>\nprint(type(regex_set.quantifier(3)))  # <class 'mre.Regex.Regex'>",
             "title": "quantifier"
         },
         {
-            "location": "/en/how-to-use/#group",
+            "location": "/en_US/how-to-use/#group",
             "text": "This class represents a group in RegEx. The constructor has two parameters:     Parameter  Type  default value      regex  str ,  int ,  Regex  \"\"    non_capturing  bool  False     If the argument for  non_capturing  is  True , the symbol indicating  RegEx Engine  to return a non capturing group is added( ?: ).  from mre import Group\n\nregex_group_one = Group('<h1>') + Group('[\\w\\s]+') + Group('</h1>')\nregex_group_two = Group('<h1>', True) + Group('[\\w\\s]+') + Group('</h1>', True)\n\nprint(regex_group_one)  # (<h1>)([\\w\\s]+)(</h1>)\nprint(regex_group_two)  # (?:<h1>)([\\w\\s]+)(?:</h1>)",
             "title": "Group"
         },
         {
-            "location": "/en/how-to-use/#methods_2",
+            "location": "/en_US/how-to-use/#methods_2",
             "text": "This class inherits the methods of class  Regex , overriding the following.",
             "title": "Methods"
         },
         {
-            "location": "/en/how-to-use/#get_2",
+            "location": "/en_US/how-to-use/#get_2",
             "text": "Returns the value stored in  self.rgx , but within parentheses.  from mre import Group\n\nregex_group_one = Group(\"<h1>\")\nregex_group_two = Group(\"</h1>\", True)\n\nprint(regex_group_one.get())  # \"(<h1>)\"\nprint(regex_group_two.get())  # \"(?:</h1>)\"",
             "title": "get"
         },
         {
-            "location": "/en/how-to-use/#quantifier_3",
+            "location": "/en_US/how-to-use/#quantifier_3",
             "text": "Returns a new  Regex  objects with a quantifier for the group.  from mre import Group\n\nregex_group = Group(\"<h1>\")\n\nprint(regex_group)  # \"(<h1>)\"\nprint(regex_group.quantifier(3))  # \"(<h1>){3}\"\n\nprint(type(regex_group))  # <class 'mre.Group.Group'>\nprint(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>",
             "title": "quantifier"
         },
         {
-            "location": "/en/how-to-use/#anchor",
+            "location": "/en_US/how-to-use/#anchor",
             "text": "This class respresents an anchored RegEx (the RegEx must start and end as defined). The constructor has two parameters:     Parameter  Type  default value      regex  str ,  int ,  Regex  \"\"    negate  bool  False     If the argument for  negate  is  True , the inverse pattern symbol is added, i.e. the RegEx must not start and end as defined.  from mre import Anchor\n\nregex_anchor_one = Anchor(\"\\\\d{4}-\\\\w+.txt\")\nregex_anchor_two = Anchor(\"\\\\d{4}-\\\\w+.txt\", True)\n\nprint(regex_anchor_one)  # \"^\\d{4}-\\w+.txt$\"\nprint(regex_anchor_two)  # \"\\b\\d{4}-\\w+.txt\\B\"",
             "title": "Anchor"
         },
         {
-            "location": "/en/how-to-use/#methods_3",
+            "location": "/en_US/how-to-use/#methods_3",
             "text": "This class inherits the methods of class  Regex , overriding the following.",
             "title": "Methods"
         },
         {
-            "location": "/en/how-to-use/#get_3",
+            "location": "/en_US/how-to-use/#get_3",
             "text": "Returns the value stored in  self.rgx , but anchored.  from mre import Anchor\n\nregex_anchor_one = Anchor(\"<h1>Hello world<\\/h1>\")\nregex_anchor_two = Anchor(\"<h1>Hello world<\\/h1>\", True)\n\nprint(regex_anchor_one.get())  # \"^<h1>Hello world</h1>$\"\nprint(regex_anchor_two.get())  # \"\\b<h1>Hello world</h1>\\B\"",
             "title": "get"
         },
         {
-            "location": "/en/how-to-use/#helperrange",
+            "location": "/en_US/how-to-use/#helperrange",
             "text": "This class is intended to assist in creating a RegEx that indicates a character class in form of a  range . The constructor has two parameters:     Parameter  Type  default value      minimum  str ,  int  0    maximum  str ,  int  \"z\"     Ideally you should use this class together with a  Set . Within a  Set  the hyphen has a \"magic\" value, that allows it to assign a range. Outside of a set a hyphen has only the hyphen value. So if you want lowercase letters, you should use  [a-z]  instead of  a-z .  a-z  indicates you only want the values  a ,  -  and  z .  from mre.helper import Range\n\n# all digits\ndigits = Range(0, 9)\n# all letters\nletters = Range('A', 'z')\n\nprint(digits)  # \"0-9\"\nprint(letters)  # \"A-z\"",
             "title": "helper.Range"
         },
         {
-            "location": "/en/how-to-use/#methods_4",
+            "location": "/en_US/how-to-use/#methods_4",
             "text": "This class inherits the methods of the  Regex  class and has its own methods.",
             "title": "Methods"
         },
         {
-            "location": "/en/how-to-use/#digits",
+            "location": "/en_US/how-to-use/#digits",
             "text": "Has two parameters:     Parameter  Type  default value      minimum  int  0    maximum  int  9     Returns a  range  that is defined as the digits between  minimum  and  maximum .  from mre.helper import Range\n\nregex_range_one = Range(0, 9)\nregex_range_two = Range().digits()\nregex_range_three = Range(0, 6)\nregex_range_four = Range().digits(0, 6)\n\nprint(regex_range_one)  # \"0-9\"\nprint(regex_range_two)  # \"0-9\"\nprint(regex_range_three)  # \"0-6\"\nprint(regex_range_four)  # \"0-6\"",
             "title": "digits"
         },
         {
-            "location": "/en/how-to-use/#letters",
+            "location": "/en_US/how-to-use/#letters",
             "text": "Has four parameters:     Parameter  Type  default value      minimum  chr  A    maximum  chr  z    uppercase  bool  False    lowercase  bool  False     Returns a  range  that is defined as the letters between  minimum  and  maximum .  from mre.helper import Range\n\n# all letters\nregex_range_one = Range('A', 'z')\nregex_range_two = Range().letters()\nregex_range_three = Range().letters('A', 'z')\nregex_range_four = Range().letters(uppercase=True, lowercase=True)\n# all capital letters\nregex_range_five = Range().letters(uppercase=True)\n# all lowercase letters\nregex_range_six = Range().letters(lowercase=True)\n\nprint(regex_range_one)  # \"A-z\"\nprint(regex_range_two)  # \"A-z\"\nprint(regex_range_three)  # \"A-z\"\nprint(regex_range_four)  # \"A-z\"\nprint(regex_range_five)  # \"A-Z\"\nprint(regex_range_six)  # \"a-z\"",
             "title": "letters"
         },
         {
-            "location": "/en/how-to-use/#examples",
+            "location": "/en_US/how-to-use/#examples",
             "text": "2 ways to create a RegEx for a  CEP  (brazilian postal code) ( [0-9]{5}-?[0-9]{3} ):  from mre import Regex, Set\n\n# all digits\ndigits = Set(Regex(\"0-9\"))\n\nrgx_cep = Regex(\n    digits.quantifier(5),\n    Regex(\"-\").quantifier(0, 1),\n    digits.quantifier(3),\n)  from mre import Regex, Quantifier, Set\nfrom mre.helper import Range\n\n# all digits [0-9]\ndigits = Set(Range().digits())\n# the hyphen may appear zero or one times\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cep = Regex(\n    digits.quantifier(5), hyphen,\n    digits.quantifier(3),\n)  RegEx for a  CPF  (brazilian tax payer registry number) ( [0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2} ):  from mre import Regex, Set\nfrom mre.helper import Range\n\n# all digits\nall_digits = Set(Range(0, 9))\n# the dot may appear zero or one times\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# the hyphen may appear zero or one times\nhyphen = Regex('-').quantifier(0, 1)\n\nrgx_cpf = Regex(\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), dot,\n    all_digits.quantifier(3), hyphen,\n    all_digits.quantifier(2),\n)  RegEx for a  CNPJ  (ID in the brazilian National Registry of Legal Entities) ( \\d{2}\\.?\\d{3}\\.?\\d{3}\\/?\\d{4}\\-?\\d{2} ):  from mre import Regex, Quantifier\n\n# all digits\ndigits = Regex(Regex.DIGIT)\n# the dot may appear zero or one times\ndot = Regex(Regex.DOT).quantifier(0, 1)\n# the slash may appear zero or one times\nslash = Regex(Regex.SLASH).quantifier(0, 1)\n# the hyphen may appear zero or one times\nhyphen = Quantifier(\"-\", 0, 1)\n\nrgx_cnpj = Regex(\n    digits.quantifier(2), dot,\n    digits.quantifier(3), dot,\n    digits.quantifier(3), slash,\n    digits.quantifier(4), hyphen,\n    digits.quantifier(2),\n)",
             "title": "Examples"
         },
         {
-            "location": "/en/",
+            "location": "/en_US/",
             "text": "MRE\n\n\nA Python package to make regular expression (RegEx). Its purpose is to make creating a RegEx something easier to read.\n\n\nInstala\u00e7\u00e3o do MRE\n\n\nInstall the MRE package using pip:\n\n\npip install mre",
             "title": "Home"
         },
         {
-            "location": "/en/#mre",
+            "location": "/en_US/#mre",
             "text": "A Python package to make regular expression (RegEx). Its purpose is to make creating a RegEx something easier to read.",
             "title": "MRE"
         },
         {
-            "location": "/en/#instalacao-do-mre",
+            "location": "/en_US/#instalacao-do-mre",
             "text": "Install the MRE package using pip:  pip install mre",
             "title": "Instala\u00e7\u00e3o do MRE"
         },
