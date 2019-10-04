@@ -209,7 +209,7 @@
 </li>
 </ul>
 <h2 id="regex"><a name="regex">Regex</a></h2>
-<p>Dies ist die Elternklasse von allen anderen Klassen in diesem Paket. Der reguläre Ausdruck wird in der Variable <code>self.rgx</code> verarbeitet. Der Konstruktor kann eine beliebige Anzahl an parametern erhalten, welche aber alle vom Typ <code>str</code>, <code>int</code> oder der <code>Regex</code> Klasse selber sein. Zum besseren Verständnis:</p>
+<p>Dies ist die Elternklasse von allen anderen Klassen in diesem Paket. Der reguläre Ausdruck wird in der Variable <code>self.rgx</code> verarbeitet. Der Konstruktor kann eine beliebige Anzahl an parametern erhalten, welche aber alle vom Typ <code>str</code>, <code>int</code> oder der <code>Regex</code> Klasse selber sein müssen. Zum besseren Verständnis:</p>
 <ul>
 <li><code>str</code>: wird an die Variable <code>self.rgx</code> angehangen;</li>
 <li><code>int</code>: führt eine <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a> aus</li>
@@ -292,7 +292,7 @@ rgx_five = Regex('&lt;', Regex.SLASH, 1, '&gt;')  # &lt;\/\1&gt;
 <h3 id="methoden">Methoden</h3>
 <p>Beschreibung der Methoden und der Überladungen.</p>
 <h4 id="9595str9595">__str__</h4>
-<p>Gibt den Wert, welchen in der variable <code>self.rgx</code> gespeichert ist zurück.</p>
+<p>Gibt den Wert, welcher in der Variable <code>self.rgx</code> gespeichert ist zurück.</p>
 <pre><code class="python">from mre import Regex
 
 regex = Regex(&quot;Hello world&quot;)
@@ -348,7 +348,7 @@ print(regex_two)  # &quot;Hello world&quot;
 </code></pre>
 
 <h4 id="get">get</h4>
-<p>Gibt den Wert, welcher in <code>self.rgx</code> gespeichert ist zurück.</p>
+<p>Gibt den Wert, welcher in <code>self.rgx</code> gespeichert ist, zurück.</p>
 <pre><code class="python">from mre import Regex
 
 regex = Regex(&quot;stored value&quot;)
@@ -384,7 +384,7 @@ print(regex.get())  # &quot;stored value&quot;
 </tbody>
 </table>
 <p>Benutzt um festzulegen, wie häufig ein regulärer Ausdruck auftreten sollte (von <code>n</code> nach <code>m</code>). Gibt ein neues <strong>Regex</strong> Objekt zurück.</p>
-<p>In besonderen Fällen, wird ein Zeichen hinzugefügt. Diese Fälle sind:</p>
+<p>In besonderen Fällen wird ein Zeichen hinzugefügt. Diese Fälle sind:</p>
 <table>
 <thead>
 <tr>
@@ -419,7 +419,7 @@ print(regex.get())  # &quot;stored value&quot;
 </tr>
 </tbody>
 </table>
-<p>Zusätzlich zu diesen besonderen Fällen, die Quantifikation kann wie folgt auftreten:
+<p>Zusätzlich zu diesen besonderen Fällen, kann die Quantifikation wie folgt auftreten:
 - <code>{n}</code>: sollte <code>n</code> mal auftreten;
 - <code>{n, m}</code>: kann von <code>n</code> bis zu <code>m</code> mal auftreten.</p>
 <pre><code class="python">from mre import Regex
@@ -544,7 +544,7 @@ print(type(regex_set.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
 </tr>
 </tbody>
 </table>
-<p>Wenn der Ausdruck für <code>non_capturing</code> <code>True</code> ist, das Zeichen, welches die <em>RegEx Engine</em> anzeigt wird der Non-Captured-Gruppe hinzugefügt (<code>?:</code>).</p>
+<p>Wenn der Ausdruck für <code>non_capturing</code> <code>True</code> ist, wird das Zeichen, welches die <em>RegEx Engine</em> anzeigt, wird der Non-Captured-Gruppe hinzugefügt (<code>?:</code>).</p>
 <pre><code class="python">from mre import Group
 
 regex_group_one = Group('&lt;h1&gt;') + Group('[\w\s]+') + Group('&lt;/h1&gt;')
@@ -581,7 +581,7 @@ print(type(regex_group.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
 </code></pre>
 
 <h2 id="anchor"><a name="anchor">Anchor</a></h2>
-<p>Diese Klasse repräsentiert ein verankerten regulären Ausdruck (Der RegEx muss beginnen und enden wie definiert). Der Konstruktor hat zwei Parameter:</p>
+<p>Diese Klasse repräsentiert einen verankerten regulären Ausdruck (Der RegEx muss beginnen und enden wie definiert). Der Konstruktor hat zwei Parameter:</p>
 <table>
 <thead>
 <tr>
@@ -733,7 +733,7 @@ print(regex_range_four)  # &quot;0-6&quot;
 </tr>
 </tbody>
 </table>
-<p>Gibt eine Spanne (<em>range</em>) zrück, welche den Zwichen zwischen <code>minimum</code> und <code>maximum</code> entspricht.</p>
+<p>Gibt eine Spanne (<em>range</em>) zrück, welche den Werten zwischen <code>minimum</code> und <code>maximum</code> entspricht.</p>
 <pre><code class="python">from mre.helper import Range
 
 # all letters
