@@ -126,6 +126,9 @@
     <a class="current" href="./">Guia de uso</a>
     <ul class="subnav">
             
+    <li class="toctree-l3"><a href="#sumario">Sumário</a></li>
+    
+
     <li class="toctree-l3"><a href="#classes">Classes</a></li>
     
         <ul>
@@ -143,6 +146,9 @@
             <li><a class="toctree-l4" href="#helperrange">helper.Range</a></li>
         
         </ul>
+    
+
+    <li class="toctree-l3"><a href="#comentarios">Comentários</a></li>
     
 
     <li class="toctree-l3"><a href="#exemplos">Exemplos</a></li>
@@ -196,7 +202,13 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="classes">Classes</h1>
+                <h1 id="sumario">Sumário</h1>
+<ul>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#comments">Comentários</a></li>
+<li><a href="#examples">Exemplos</a></li>
+</ul>
+<h1 id="classes"><a name="classes">Classes</a></h1>
 <ul>
 <li><a href="#regex">Regex</a></li>
 <li><a href="#quantifier">Quantifier</a></li>
@@ -754,7 +766,42 @@ print(regex_range_five)  # &quot;A-Z&quot;
 print(regex_range_six)  # &quot;a-z&quot;
 </code></pre>
 
-<h1 id="exemplos">Exemplos</h1>
+<h1 id="comentarios"><a name="comments">Comentários</a></h1>
+<p>Existem dois modos de realizar comentários no seu Regex:</p>
+<ol>
+<li>Utilizando o método <code>comment</code>;</li>
+<li>Utilizando a classe <code>Comment</code>.</li>
+</ol>
+<p><strong>Utilizando o método</strong>:</p>
+<pre><code class="py">from mre import Regex, Set
+
+# All digits
+digits = Set(Regex(&quot;0-9&quot;))
+# Add comment
+digits = digits.comment('Get all digits')
+
+# Output: [0-9](?#Get all digits)
+</code></pre>
+
+<p><strong>Utilizando a classe</strong>:</p>
+<pre><code class="py">from mre import Regex, Set, Comment
+
+# All digits
+digits = Set(Regex(&quot;0-9&quot;))
+# CEP comment
+cep_comment = Comment('Get zip code Brazil on input')
+# CEP regex
+rgx_cep = Regex(
+    digits.quantifier(5),
+    Regex(&quot;-&quot;).quantifier(0, 1),
+    digits.quantifier(3),
+    cep_comment
+)
+
+# Output: [0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)
+</code></pre>
+
+<h1 id="exemplos"><a name="examples">Exemplos</a></h1>
 <p>2 formas de fazer o RegEx de <strong>CEP</strong> (<code>[0-9]{5}-?[0-9]{3}</code>)</p>
 <pre><code class="python">from mre import Regex, Set
 
