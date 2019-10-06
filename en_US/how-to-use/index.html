@@ -209,11 +209,11 @@
 </li>
 </ul>
 <h2 id="regex"><a name="regex">Regex</a></h2>
-<p>This is the parent class of all other classes in this package, the RegEx is being handled in variable <code>self.rgx</code>. Your constructor can receive any number of inputs, but they require the following types: <code>str</code>, <code>int</code> and the <code>Regex</code> class itself. For better understanding:</p>
+<p>This is the parent class of all other classes in this package. The RegEx is handled in the variable <code>self.rgx</code>. Your constructor can receive any number of inputs, but they require the following types: <code>str</code>, <code>int</code> and the <code>Regex</code> class itself. To further explain:</p>
 <ul>
 <li><code>str</code>: concatenates to variable <code>self.rgx</code>;</li>
 <li><code>int</code>: performs <a href="https://www.regular-expressions.info/backref.html"><em>backreferences</em></a>;</li>
-<li><code>Regex</code>: concatenates the value of <code>self.rgx</code> of the passed object to variable <code>self.rgx</code> of the receiving object.</li>
+<li><code>Regex</code>: concatenates the value of <code>self.rgx</code> of the passed object to the variable <code>self.rgx</code> of the receiving object.</li>
 </ul>
 <p>Ways to declare a <strong>Regex</strong>:</p>
 <pre><code class="python">from mre import Regex, Group
@@ -300,7 +300,7 @@ print(regex)  # &quot;Hello world&quot;
 </code></pre>
 
 <h4 id="9595eq9595">__eq__</h4>
-<p>Comparisons are possible with <code>str</code> and <code>Regex</code> type:
+<p>Comparisons are possible with <code>str</code> and <code>Regex</code> types:
 - <code>== str</code>: compares <code>self.rgx</code> to the value of the passed variable;
 - <code>== Regex</code>: compares <code>self.rgx</code> (accessed via method <strong>get</strong>) to the value of <code>self.rgx</code> of the passed object (also accessed via method <strong>get</strong>).</p>
 <pre><code class="python">from mre import Regex
